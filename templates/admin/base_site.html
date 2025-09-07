@@ -1,0 +1,12 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">
+
+{% endblock %}
+{% block userlinks %}
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'admin-logout' %}">Logout</a>
+{% endblock %}

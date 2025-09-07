@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container mt-7" >
+<form method="post" enctype="multipart/form-data">
+    <div class="row" >
+        <div class="col-md-6 ">
+            {% csrf_token %}
+            <div class="mb-3 card p-4 shadow-sm " style="margin:auto">
+                <h6>Profile Info</h6>
+                
+                <!-- Profile picture section -->
+                <div class=" d-flex justify-content-center align-items-center">
+                    {% if request.user.profile.profile_pic %}
+                        <img src="{{ request.user.profile.profile_pic.url }}" class="img-fluid rounded-circle mb-3 shadow-sm " alt="profile picture" style="max-width:170px; max-height: 170px; margin:auto;"/>
+                    {% else %}
+                        <img src="{{ MEDIA_URL }default.png" class= "img-fluid rounded-circle mb-3 shadow-sm" alt="Default Profile Picture" style="max-width:180px; max-height:180px;"/>
+                    {% endif %}
+                </div>
+            {{ profile_form|crispy}}
+            </div>
+        </div>
+        <div class="col-md-6">
+             <div class="mb-3 card p-4 shadow-sm " style="margin:auto">
+                {% csrf_token %}
+                <h6 class="mt-4">User Info</h6>
+                {{ user_form|crispy }}
+             </div>
+        </div>
+    </div>
+<input type="submit" class="btn btn-primary  col-md-4 mb-3" value="Update" style="position:relative; left:350px">
+</form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-7 mb-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow-sm border-0 rounded-lg">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Shipment #{{ shipment.tracking_number }}</h5>
+                </div>
+                <div class="card-body">
+
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <h6 class="text-muted">Sender</h6>
+                            <p>{{ shipment.user.username }}</p>
+                        </div>
+                         <div class="col-4">
+                            <h6 class="text-muted">Pickup Address</h6>
+                            <p>{{ shipment.origin_address }}</p>
+                        </div>
+                         <div class="col-4">
+                            <h6 class="text-muted">Recipient Address</h6>
+                            <p>{{ shipment.destination_address }}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <h6 class="text-muted">Weight</h6>
+                            <p>{{ shipment.weight }} kg</p>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="text-muted">Cost</h6>
+                            <p>${{ shipment.cost }}</p>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="text-muted">Status</h6>
+                            <span class="badge {% if shipment.status == 'PENDING' %} bg-warning {% elif shipment.status == 'IN_TRANSIT' %} bg-info {% elif shipment.status == 'DELIVERED' %} bg-success {% endif %}">
+                                {{ shipment.get_status_display }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 text-muted">
+                            <small>Created: {{ shipment.created_at|date:"M d, Y H:i" }}</small>
+                        </div>
+                    </div>
+
+                </div>
+
+                {% if request.user.profile.role == 'customer' %}
+                <div class="card-footer d-flex justify-content-around">
+                    <a href="{% url 'shipments:list' %}" class="btn btn-primary btn-sm">← Back to Shipments</a>
+                </div>
+                {% elif request.user.profile.role == 'courier' %}
+                <div class="card-footer d-flex justify-content-around">
+                    <a href="{% url 'delivery:list' %}" class="btn btn-primary btn-sm">← Back to Deliveries</a>
+
+                    {% if shipment.status == 'IN_TRANSIT' %}
+                    <a href="{% url 'delivery:delivered' shipment.id %}" class="btn btn-success btn-sm">Shipment Delivered ✔</a>
+                    {% elif shipment.status == 'PENDING' %}
+                    <a href="{% url 'delivery:accept' shipment.id %}" class="btn btn-primary btn-sm">Accept Shipment</a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
