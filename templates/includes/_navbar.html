@@ -44,15 +44,46 @@
 
             <div class="dropdown d-none d-lg-block">
 
-              <button class="btn bg-soft-warning ms-2" id="dropdownMenuButton1" type="submit" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-search text-warning"></i>
-              </button>
+              {% if shipments or assigned_deliveries %}
+                {% if request.user.profile.role == 'customer' %}
+                              <!-- Search Button -->
+                    <button class="btn bg-soft-warning ms-2" id="dropdownMenuButton1" 
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-search text-warning"></i>
+                    </button>
 
+                    <!-- Dropdown Search Box -->
+                    <div class="dropdown-menu dropdown-menu-lg-end p-0 rounded" 
+                        aria-labelledby="dropdownMenuButton1" style="top:55px">
+                      <form method="get" action="{% url 'shipments:list' %}">
+                        <input class="form-control border-200" type="search" 
+                              name="q" value="{{ request.GET.q|default:'' }}"
+                              placeholder="Search Shipments..."
+                              aria-label="Search"
+                              style="background:#FDF1DF;" />
+                      </form>
+                    </div>
+                {% elif request.user.profile.role == 'courier' %}
+                               <!-- Search Button -->
+                    <button class="btn bg-soft-warning ms-2" id="dropdownMenuButton1" 
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-search text-warning"></i>
+                    </button>
 
-              <div class="dropdown-menu dropdown-menu-lg-end p-0 rounded" aria-labelledby="dropdownMenuButton1" style="top:55px">
-                <form>
-                  <input class="form-control border-200" type="search" placeholder="Search" aria-label="Search" style="background:#FDF1DF;" />
-                </form>
-              </div>
+                    <!-- Dropdown Search Box -->
+                    <div class="dropdown-menu dropdown-menu-lg-end p-0 rounded" 
+                        aria-labelledby="dropdownMenuButton1" style="top:55px">
+                      <form method="get" action="{% url 'delivery:list' %}">
+                        <input class="form-control border-200" type="search" 
+                              name="q" value="{{ request.GET.q|default:'' }}"
+                              placeholder="Search Shipments..."
+                              aria-label="Search"
+                              style="background:#FDF1DF;" />
+                      </form>
+                    </div>
+                {% endif %}
+              {% endif %}
+
             </div>
             
             {% if request.user.is_authenticated %}

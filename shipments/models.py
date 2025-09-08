@@ -21,6 +21,14 @@ class Shipment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def mark_delivered(self):
+        self.status ='DELIVERED'
+        self.save()
+
+    def mark_in_transit(self):
+        self.status = 'IN_TRANSIT'
+        self.save()
+
     def save(self, *args, **kwargs):
         if not self.tracking_number:
             while True:

@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, CreateView, ListView, DetailView,
 from .forms import ShipmentForm
 from .models import Shipment
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import models
 
 
 # Create your views here.
@@ -28,7 +29,30 @@ class ShipmentListView(LoginRequiredMixin, ListView):
     login_url = "users:login"
 
     def get_queryset(self):
-        return self.model.objects.filter(user=self.request.user)
+        user = self.request.user
+        query = self.request.GET.get("q")
+        status = self.request.GET.get("status")
+
+        qs = Shipment.objects.filter(user=user)
+
+        if query:
+            qs = qs.filter(
+                models.Q(tracking_number__icontains=query)|
+                models.Q(origin_address__icontains=query) |
+                models.Q(destination_address__icontains=query)
+            )
+
+        if status and status != "ALL":
+            qs = qs.filter(status=status)
+
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["status_choices"] = Shipment.STATUS_CHOICES
+        context["selected_status"] = self.request.GET.get("status", "ALL")
+        context["query"] = self.request.GET.get("q", "")
+        return context
 
 
 class ShipmentDetailView(LoginRequiredMixin, DetailView):

@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
 from shipments.models import Shipment
 from django.contrib.auth.decorators import login_required
+from django.db import models
 
 
 # Create your views here.
@@ -48,7 +49,30 @@ class CourierListView(LoginRequiredMixin, ListView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        return DeliveryAssignment.objects.filter(courier=self.request.user.courier)
+        user = self.request.user
+        query = self.request.GET.get("q")
+        status = self.request.GET.get("status")
+
+        qs = DeliveryAssignment.objects.filter(courier=user.courier)
+
+        if query:
+            qs = qs.filter(
+                models.Q(shipment__tracking_number__icontains=query)|
+                models.Q(shipment__origin_address__icontains=query) |
+                models.Q(shipment__destination_address__icontains=query)
+            )
+
+        if status and status != "ALL":
+            qs = qs.filter(status=status)
+
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["status_choices"] = Shipment.STATUS_CHOICES
+        context["selected_status"] = self.request.GET.get("status", "ALL")
+        context["query"] = self.request.GET.get("q", "")
+        return context
     
 
 
@@ -59,21 +83,17 @@ class SuccessView(LoginRequiredMixin, TemplateView):
 @login_required(login_url="users:login")
 def accept_delivery_view(request, id):
     accepted_shipment = Shipment.objects.get(id=id)
-    accepted_shipment.status = "IN_TRANSIT"
-    accepted_shipment.save()
+    accepted_shipment.mark_in_transit()
 
     delivery_assignment_for_this_shipment = DeliveryAssignment.objects.get(shipment=accepted_shipment)
-    delivery_assignment_for_this_shipment.status = "ACCEPTED"
-    delivery_assignment_for_this_shipment.save()
+    delivery_assignment_for_this_shipment.mark_accepted()
     return redirect("delivery:list")
 
 @login_required(login_url="users:login")
 def delivered_delivery_view(request, id):
     delivered_shipment = Shipment.objects.get(id=id)
-    delivered_shipment.status = "DELIVERED"
-    delivered_shipment.save()
+    delivered_shipment.mark_delivered()
 
     delivery_assignment_for_this_shipment = DeliveryAssignment.objects.get(shipment=delivered_shipment)
-    delivery_assignment_for_this_shipment.status = "DELIVERED"
-    delivery_assignment_for_this_shipment.save()
+    delivery_assignment_for_this_shipment.mark_delivered()
     return redirect("delivery:list")

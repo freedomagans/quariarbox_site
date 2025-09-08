@@ -27,6 +27,14 @@ class DeliveryAssignment(models.Model):
     delivered_at = models.DateTimeField(blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES,default='ASSIGNED')
 
+    def mark_accepted(self):
+        self.status = "ACCEPTED"
+        self.save()
+
+    def mark_delivered(self):
+        self.status = "DELIVERED"
+        self.save()
+
     def __str__(self):
         return f"{self.shipment.tracking_number} -> {self.courier.user.username}"
     
