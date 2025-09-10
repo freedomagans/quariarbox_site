@@ -109,7 +109,54 @@
               <input class="form-control me-2 border-200 bg-light" type="search" placeholder="Search" aria-label="Search" />
               <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
-          </div>
 
+            {% comment %} Notification section  {% endcomment %}
+            <li class="nav-item dropdown list-unstyled">
+            <a class="btn" href="#" id="navbarDropdownNotifications" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-bell fa-1x"></i>
+              {% if unread_notification_count > 0 %}
+                 <span class="text-primary position-absolute top-0 start-90 translate-middle">
+                  {{ unread_notification_count }}
+                 </span>
+              {% endif %}
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end p-0 shadow list-unstyled" aria-labelledby="navbarDropdownNotifications"
+                style="min-width: 300px;">
+              <li class="dropdown-header bg-soft-warning text-dark fw-bold px-3 py-2">
+                Notifications
+              </li>
+
+              {% if recent_notifications %}
+                {% for n in recent_notifications %}
+                  <li>
+                    <a href="{% url 'notifications:mark_as_read' n.id %}"
+                      class="dropdown-item small {% if not n.is_read %}fw-bold{% endif %}">
+                      {{ n.message|truncatechars:50 }}
+                      <br>
+                      <small class="text-muted">{{ n.created_at|timesince }} ago</small>
+                    </a>
+                  </li>
+                {% endfor %}
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <a class="dropdown-item text-center text-primary fw-bold"
+                    href="{% url 'notifications:list' %}">
+                    View all notifications
+                  </a>
+                </li>
+              {% else %}
+                <li>
+                  <span class="dropdown-item text-muted">No notifications</span>
+                </li>
+              {% endif %}
+            </ul>
+          </li>
+
+
+          </div>
         </div>
       </nav>

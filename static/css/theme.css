@@ -18571,3 +18571,26 @@ div.breadcrumbs a:hover {
 h1{
   font-size: 18px;
 }
+
+/* Remove unwanted list-style dots */
+.dropdown-menu ul,
+.dropdown-menu li {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Notification dropdown scroll bar tweaks */
+.dropdown-menu .list-group {
+  scrollbar-width: thin;
+  scrollbar-color: #ffc107 #fdf1df; /* yellow on soft background */
+}
+
+.dropdown-menu .list-group::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu .list-group::-webkit-scrollbar-thumb {
+  background-color: #ffc107;
+  border-radius: 3px;
+}

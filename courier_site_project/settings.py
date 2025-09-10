@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users.apps.UserAppConfig',
     'shipments.apps.ShipmentAppConfig',
     'delivery.apps.DeliveryAppConfig',
+    'notifications.apps.NotificationsConfig',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'notifications.context_processor.notifications_count',
             ],
         },
     },
