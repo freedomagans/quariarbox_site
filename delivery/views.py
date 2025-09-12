@@ -70,7 +70,7 @@ class CourierListView(LoginRequiredMixin, ListView):
         query = self.request.GET.get("q")
         status = self.request.GET.get("status")
 
-        qs = DeliveryAssignment.objects.filter(courier=user.courier)
+        qs = DeliveryAssignment.objects.filter(courier=user.courier).order_by("-assigned_at")
 
         if query:
             qs = qs.filter(

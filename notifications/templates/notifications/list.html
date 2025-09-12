@@ -3,9 +3,8 @@
 {% block content %}
 <div class="container py-4">
   
-
   <div class="d-flex justify-content-between mb-3 mt-7">
-    <span class="fw-bold" style="">Unread: {{ unread_count }}</span>
+    <span class="fw-bold">Unread: {{ unread_count }}</span>
     <form method="post" action="{% url 'notifications:mark_all_read' %}">
       {% csrf_token %}
       <button class="btn btn-sm btn-outline-warning">Mark all as read</button>
@@ -14,18 +13,30 @@
 
   <ul class="list-group shadow-sm">
     {% for n in notifications %}
-      <li class="list-group-item d-flex justify-content-between align-items-start
+      <li class="list-group-item d-flex justify-content-between align-items-center
           {% if not n.is_read %}list-group-item-warning{% endif %}">
-        <div>
+        
+        <!-- Left side: message + timestamp -->
+        <div class="me-3">
           <div class="{% if not n.is_read %}fw-bold{% endif %}">
             {{ n.message }}
           </div>
           <small class="text-muted">{{ n.created_at|date:"M d, Y H:i" }}</small>
         </div>
-        <a href="{% url 'notifications:mark_as_read' n.id %}"
-           class="btn btn-sm btn-outline-secondary">
-          Mark read
-        </a>
+
+        <!-- Right side: action buttons -->
+        <div class="d-flex">
+          {% if not n.is_read %}
+          <a href="{% url 'notifications:mark_as_read' n.id %}"
+             class="btn btn-sm btn-outline-secondary me-2">
+            Mark read
+          </a>
+          {% endif %}
+          <a href="{% url 'notifications:delete' n.id %}" 
+             class="btn btn-sm btn-outline-danger" title="Delete">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
       </li>
     {% empty %}
       <li class="list-group-item">No notifications yet.</li>
@@ -40,7 +51,9 @@
             <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
           </li>
         {% endif %}
-        <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }}</span></li>
+        <li class="page-item disabled">
+          <span class="page-link">Page {{ page_obj.number }}</span>
+        </li>
         {% if page_obj.has_next %}
           <li class="page-item">
             <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>

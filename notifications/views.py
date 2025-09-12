@@ -51,3 +51,11 @@ def mark_all_read(request):
     
     Notification.objects.filter(recipient=request.user).update(is_read=True)
     return redirect("notifications:list")
+
+
+@login_required(login_url="users:login")
+def delete_notification(request, pk):
+    """Allow user to delete a single notification."""
+    notification = get_object_or_404(Notification, pk=pk, recipient=request.user)
+    notification.delete()
+    return redirect(reverse("notifications:list"))

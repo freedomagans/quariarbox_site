@@ -33,7 +33,7 @@ class ShipmentListView(LoginRequiredMixin, ListView):
         query = self.request.GET.get("q")
         status = self.request.GET.get("status")
 
-        qs = Shipment.objects.filter(user=user)
+        qs = Shipment.objects.filter(user=user).order_by("-created_at")
 
         if query:
             qs = qs.filter(

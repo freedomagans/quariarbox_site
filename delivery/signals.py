@@ -2,6 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .models import Courier, CourierApplication
 from users.models import Profile
+from django.contrib.auth.models import User
 
 @receiver(post_save, sender=Courier)
 def set_user_role_to_courier(sender, instance, created, **kwargs):
@@ -20,5 +21,7 @@ def create_courier_on_approval(sender, instance, created, **kwargs):
     else:
         try:
             Courier.objects.get(user=instance.user).delete()
+            instance.user.profile.role = "customer"
+            instance.user.profile.save()
         except Courier.DoesNotExist:
             pass

@@ -60,7 +60,7 @@
                     <a href="{% url 'delivery:list' %}" class="btn btn-primary btn-sm">← Back to Deliveries</a>
 
                     {% if shipment.status == 'IN_TRANSIT' %}
-                    <a href="{% url 'delivery:delivered' shipment.id %}" class="btn btn-success btn-sm">Shipment Delivered ✔</a>
+                    <a href="{% url 'delivery:delivered' shipment.id %}" class="btn btn-success btn-sm">Delivered Shipment ✔</a>
                     {% elif shipment.status == 'PENDING' %}
                     <a href="{% url 'delivery:accept' shipment.id %}" class="btn btn-primary btn-sm">Accept Shipment</a>
                     {% endif %}
