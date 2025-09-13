@@ -52,8 +52,16 @@
                 </div>
 
                 {% if request.user.profile.role == 'customer' %}
-                <div class="card-footer d-flex justify-content-around">
-                    <a href="{% url 'shipments:list' %}" class="btn btn-primary btn-sm">← Back to Shipments</a>
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="{% url 'shipments:list' %}" class="btn btn-primary btn-sm ">← Back to Shipments</a>
+
+                    {% if shipment.payments.status == "PENDING" %}
+                        <a href="#" class=" btn btn-info btn-sm text-white badge">
+                            Pay Now
+                        </a>
+                        {% elif shipment.payments.status == "PAID" %}
+                        <span class="badge bg-success">Paid</span>
+                    {% endif %}
                 </div>
                 {% elif request.user.profile.role == 'courier' %}
                 <div class="card-footer d-flex justify-content-around">

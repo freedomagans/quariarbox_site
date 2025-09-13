@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'shipments.apps.ShipmentAppConfig',
     'delivery.apps.DeliveryAppConfig',
     'notifications.apps.NotificationsConfig',
+    'payments.apps.PaymentsConfig',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
