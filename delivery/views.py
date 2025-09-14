@@ -24,11 +24,7 @@ class CourierApplicationView(LoginRequiredMixin,CreateView):
 
         # ✅ If user already submitted an application
         if CourierApplication.objects.filter(user=request.user).exists():
-            Notification.objects.create(
-                recipient=request.user,
-                message="You have already submitted a courier application. Please wait for admin approval.",
-                link="delivery:success"
-            )
+            messages.warning(self.request,"You have already submitted a courier application. Please wait for admin approval.")
             return redirect("home")
 
         # ✅ Otherwise allow normal form flow
@@ -37,7 +33,8 @@ class CourierApplicationView(LoginRequiredMixin,CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         response = super().form_valid(form)
-
+        
+        messages.info(self.request,"Your application has been submitted. Please wait for approval.")
         # ✅ Notify user on successful application submission
         Notification.objects.create(
             recipient=self.request.user,
@@ -104,6 +101,7 @@ def accept_delivery_view(request, id):
 
     delivery_assignment_for_this_shipment = DeliveryAssignment.objects.get(shipment=accepted_shipment)
     delivery_assignment_for_this_shipment.mark_accepted()
+    messages.info(request,f"Shipment {accepted_shipment.tracking_number} accepted and ready for delivery")
     return redirect("delivery:list")
 
 @login_required(login_url="users:login")
@@ -113,4 +111,5 @@ def delivered_delivery_view(request, id):
 
     delivery_assignment_for_this_shipment = DeliveryAssignment.objects.get(shipment=delivered_shipment)
     delivery_assignment_for_this_shipment.mark_delivered()
+    messages.success(request, "Shipment marked as delivered successfully.")
     return redirect("delivery:list")

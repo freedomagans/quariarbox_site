@@ -6,7 +6,7 @@ from .forms import ShipmentForm
 from .models import Shipment
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import models
-
+from django.contrib import messages
 
 # Create your views here.
 class ShipmentCreateView(LoginRequiredMixin, CreateView):
@@ -19,6 +19,7 @@ class ShipmentCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         # assign logged-in user before saving
         form.instance.user = self.request.user
+        messages.success(self.request,"Shipment created.")
         return super().form_valid(form)
 
 
@@ -71,10 +72,16 @@ class ShipmentUpdateView(LoginRequiredMixin,UpdateView):
     success_url = reverse_lazy("shipments:list")
     login_url = "users:login"
 
+    def form_valid(self, form):
+        messages.success(self.request,f"Shipment {form.instance.tracking_number} updated.")
+        return super().form_valid(form)
+    
+
 
 class ShipmentDeleteView(LoginRequiredMixin,View):
     def post(self, request, *args, **kwargs):
         shipment_ids = request.POST.getlist("shipments")
         if shipment_ids:
             Shipment.objects.filter(id__in=shipment_ids, user=request.user).delete()
+            messages.warning(request,"shipments deleted.")
         return redirect("shipments:list")

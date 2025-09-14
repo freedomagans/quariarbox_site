@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-4">
                             <h6 class="text-muted">Status</h6>
-                            <span class="badge {% if shipment.status == 'PENDING' %} bg-warning {% elif shipment.status == 'IN_TRANSIT' %} bg-info {% elif shipment.status == 'DELIVERED' %} bg-success {% endif %}">
+                            <span class="p-2 text-white {% if shipment.status == 'PENDING' %} bg-warning {% elif shipment.status == 'IN_TRANSIT' %} bg-info {% elif shipment.status == 'DELIVERED' %} bg-success {% endif %}">
                                 {{ shipment.get_status_display }}
                             </span>
                         </div>
@@ -56,11 +56,11 @@
                     <a href="{% url 'shipments:list' %}" class="btn btn-primary btn-sm ">← Back to Shipments</a>
 
                     {% if shipment.payments.status == "PENDING" %}
-                        <a href="#" class=" btn btn-info btn-sm text-white badge">
+                        <a href="{% url 'payments:process-payment' shipment.id %}" class=" btn btn-info btn-sm text-white p-lg-2">
                             Pay Now
                         </a>
                         {% elif shipment.payments.status == "PAID" %}
-                        <span class="badge bg-success">Paid</span>
+                        <a href="{% url 'payments:process-payment' shipment.id %}" class="badge  btn-success">Paid</a>
                     {% endif %}
                 </div>
                 {% elif request.user.profile.role == 'courier' %}

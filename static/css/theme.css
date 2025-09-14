@@ -18594,3 +18594,55 @@ h1{
   background-color: #ffc107;
   border-radius: 3px;
 }
+/* 🔔 Base Alert */
+.qbx-alert {
+  position: relative;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ✅ Success */
+.qbx-success {
+  background-color: #e6f7f1;
+  border-left: 5px solid #28a745;
+  color: #155724;
+}
+
+/* ⚠️ Warning */
+.qbx-warning {
+  background-color: #fff8e5;
+  border-left: 5px solid #ffc107;
+  color: #856404;
+}
+
+/* ❌ Error */
+.qbx-error,
+.qbx-danger {
+  background-color: #fdecea;
+  border-left: 5px solid #dc3545;
+  color: #721c24;
+}
+
+/* ℹ️ Info */
+.qbx-info {
+  background-color: #e8f4fd;
+  border-left: 5px solid #17a2b8;
+  color: #0c5460;
+}
+
+/* Close button */
+.qbx-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: inherit;
+  cursor: pointer;
+}

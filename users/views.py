@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
@@ -16,7 +17,8 @@ class RegisterView(FormView):
     success_url = reverse_lazy("users:login")  # page to load after successful validation "/users/login"
 
     def form_valid(self, form):
-        form.save()
+        form.save() 
+        messages.success(self.request, "congrats your account is registerd successfully.")
         return super().form_valid(form)
 
 
@@ -38,6 +40,7 @@ class LoginView(FormView):
         user = authenticate(self.request, username=username, password=password)
         if user is not None:
             login(self.request, user)
+            messages.success(self.request, f" Welcome {self.request.user.username} you are logged in.")
             return super().form_valid(form)  # redirects to success_url
         else:
             form.add_error(None, "Invalid username or password")
@@ -46,7 +49,8 @@ class LoginView(FormView):
 
 class LogoutView(View):
     def get(self, request):
-        logout(request)  # ends the session
+        logout(request)  # ends the 
+        messages.error(self.request, "Bye! you have been logged out.")
         return redirect("home")
 
 
@@ -77,6 +81,7 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(self.request, "Profile updated successfully.")
             return redirect("users:profile")
         else:
             return self.render_to_response(self.get_context_data(form=form))
