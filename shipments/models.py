@@ -45,3 +45,6 @@ class Shipment(models.Model):
 
     def __str__(self):
         return f"{self.tracking_number} - {self.status}"
+    
+    def get_payment_status(self):
+        return self.payments.status

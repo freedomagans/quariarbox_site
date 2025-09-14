@@ -55,7 +55,7 @@
                 <div class="card-footer d-flex justify-content-between">
                     <a href="{% url 'shipments:list' %}" class="btn btn-primary btn-sm ">← Back to Shipments</a>
 
-                    {% if shipment.payments.status == "PENDING" %}
+                    {% if shipment.payments.status == "PENDING" or shipment.payments.status == "FAILED" or shipment.payments.status == "REFUNDED" %}
                         <a href="{% url 'payments:process-payment' shipment.id %}" class=" btn btn-info btn-sm text-white p-lg-2">
                             Pay Now
                         </a>

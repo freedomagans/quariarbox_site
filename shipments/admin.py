@@ -4,7 +4,7 @@ from .models import Shipment
 
 # Register your models here.
 class ShipmentAdmin(admin.ModelAdmin):
-    list_display = ("tracking_number", "user", "status", "created_at")
+    list_display = ("tracking_number", "user", "status", "created_at","get_payment_status")
     list_filter = ("status", "created_at")
     search_fields = ("tracking_number", "origin_address", "destination_address",)
     exclude = ("tracking_number","cost")
