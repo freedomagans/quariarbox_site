@@ -5,11 +5,14 @@
   
   <div class="d-flex justify-content-between mb-3 mt-7">
     <span class="fw-bold">Unread: {{ unread_count }}</span>
-    <form method="post" action="{% url 'notifications:mark_all_read' %}">
-      {% csrf_token %}
-      <button class="btn btn-sm btn-outline-warning">Mark all as read</button>
-    </form>
+
+    <div>
+    <a href="{% url 'notifications:mark_all_read' %}" class="btn btn-outline-danger">Mark all as read</a>
+    <a href="{% url 'notifications:delete_all' %}" class="btn btn-outline-danger">Delete all</a>
+    </div>
   </div>
+
+    
 
   <ul class="list-group shadow-sm">
     {% for n in notifications %}

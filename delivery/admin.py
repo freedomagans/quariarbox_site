@@ -9,9 +9,16 @@ class CourierAdmin(admin.ModelAdmin):
 class CourierApplicationAdmin(admin.ModelAdmin):
     list_display = ('user', 'is_approved')
 
-class DeliveryAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'status')
+class DeliveryAssignmentAdmin(admin.ModelAdmin):
+    list_display = ('shipment','courier', 'status')
+
+    def get_changeform_initial_data(self, request):
+        initial =  super().get_changeform_initial_data(request)
+        shipment_id = request.GET.get("shipment")
+        if shipment_id:
+            initial["shipment"] = shipment_id
+        return initial
 
 admin.site.register(Courier, CourierAdmin)
-admin.site.register(DeliveryAssignment, DeliveryAdmin)
+admin.site.register(DeliveryAssignment, DeliveryAssignmentAdmin)
 admin.site.register(CourierApplication, CourierApplicationAdmin)

@@ -20,8 +20,8 @@ def on_payment_processing(sender,instance,**kwargs):
         #User notification
         Notification.objects.create(
             recipient=instance.user,
-            message=f"Payment for shipment {instance.shipment.tracking_number} was successful ",
-            link=reverse("shipments:detail",kwargs={"pk":instance.shipment.id})
+            message=f"Payment was successful click to view receipt",
+            link=reverse("payments:receipt",kwargs={"shipment_id":instance.shipment.id})
         )
 
         #admin notification

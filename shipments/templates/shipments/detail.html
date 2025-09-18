@@ -60,7 +60,8 @@
                             Pay Now
                         </a>
                         {% elif shipment.payments.status == "PAID" %}
-                        <a href="{% url 'payments:process-payment' shipment.id %}" class="badge  btn-success">Paid</a>
+                        <a href="{% url 'payments:receipt' shipment.id %}" class="btn  btn-success">View Receipt</a>
+                         <a href="{% url 'payments:download-receipt' shipment.payments.receipt.pk %}" class="btn  btn-success"><i class="fas fa-file-pdf fa-1x"></i> Download Receipt(PDF)</a>
                     {% endif %}
                 </div>
                 {% elif request.user.profile.role == 'courier' %}

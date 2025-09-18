@@ -3,6 +3,10 @@ from django.db import models
 from django.conf import settings 
 from django.urls import reverse
 from django.utils import timezone
+from weasyprint import HTML
+from django.template.loader import render_to_string
+import tempfile
+import os
 #from shipments.models import Shipment
 
 # Create your models here.
@@ -80,11 +84,30 @@ class Receipt(models.Model):
         return f"Receipt {self.receipt_number}"
     
     def save(self, *args, **kwargs):
+        #Generate a unique receipt number
         if not self.receipt_number:
             ts = timezone.now().strftime("%Y%m%d%H%M%S")
             short = uuid.uuid4().hex[:6].upper()
             self.receipt_number = f"RCP-{ts}-{short}"
+
+        #Save first to get a primary key for the file path
         super().save(*args, **kwargs)
+
+        #Generate PDF after saving
+        if not self.pdf:
+            html_string = render_to_string("payments/receipt.html", {"receipt":self})
+            html = HTML(string=html_string)
+
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as output:
+                html.write_pdf(target=output.name)
+                output.flush()
+                pdf_name = f"receipt_{self.receipt_number}.pdf"
+
+                #Save the PDF into the FileField
+                self.pdf.save(pdf_name, open(output.name, 'rb'), save=False)
+            
+            os.unlink(output.name) # cleanup temp file
+            super().save(update_fields=["pdf"])
 
     def get_absolute_url(self):
         return reverse("payments:receipt", kwargs={"pk": self.pk})

@@ -21,7 +21,7 @@ class DeliveryAssignment(models.Model):
         ('ACCEPTED', 'Accepted'),
         ('DELIVERED','Delivered'),
     ]
-    shipment = models.OneToOneField(Shipment, on_delete=models.CASCADE, related_name="shipment")
+    shipment = models.OneToOneField(Shipment, on_delete=models.CASCADE, related_name="deliveryassignment")
     courier = models.ForeignKey(Courier, on_delete=models.CASCADE)
     assigned_at = models.DateTimeField(auto_now_add=True)
     delivered_at = models.DateTimeField(blank=True, null=True)

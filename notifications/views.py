@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.urls import reverse
-
+from django.contrib import messages
 from shipments.models import Shipment
 from .models import Notification
 
@@ -43,7 +43,6 @@ def mark_as_read(request, pk):
     return redirect(redirect_url)
 
 @login_required(login_url="users:login")
-@require_POST
 def mark_all_read(request):
     """
     Mark all unread notifications for current user as read
@@ -59,3 +58,10 @@ def delete_notification(request, pk):
     notification = get_object_or_404(Notification, pk=pk, recipient=request.user)
     notification.delete()
     return redirect(reverse("notifications:list"))
+
+
+@login_required(login_url="users:login")
+def delete_all_notifications(request):
+        Notification.objects.filter(recipient=request.user).delete()
+        messages.warning(request,"Notifications deleted.")
+        return redirect("notifications:list")
