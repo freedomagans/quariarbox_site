@@ -20,7 +20,7 @@ class ShipmentAdmin(admin.ModelAdmin):
                 url = (
                     reverse("admin:delivery_deliveryassignment_add") + f"?shipment={obj.pk}"
                 )
-                return format_html("<a class='btn btn-primary pt-1 pb-1' style='color:white;' href='{}'>Assign</a>", url)
+                return format_html("<a class='btn-sm btn-primary pt-1 pb-1' style='color:white;' href='{}'>Assign</a>", url)
             
         # Case 3: Not paid => show nothing 
         return "--"

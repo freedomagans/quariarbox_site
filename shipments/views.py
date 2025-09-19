@@ -85,3 +85,15 @@ class ShipmentDeleteView(LoginRequiredMixin,View):
             Shipment.objects.filter(id__in=shipment_ids, user=request.user).delete()
             messages.warning(request,"shipments deleted.")
         return redirect("shipments:list")
+
+def track_shipment_view(request):
+    shipment = None 
+    error = None
+
+    if request.method == "POST":
+        tracking_number = request.POST.get("tracking_number").strip()
+        try:
+            shipment = Shipment.objects.get(tracking_number=tracking_number)
+        except Shipment.DoesNotExist:
+            error = "No shipment found with that tracking number."
+    return render(request, "shipments/track.html", {"shipment": shipment, "error":error})

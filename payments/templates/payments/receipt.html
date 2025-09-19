@@ -2,125 +2,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Receipt {{ receipt.receipt_number }}</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 40px;
-            color: #222;
-            background: #f9fafb;
-        }
-        .qbx-container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.08);
-        }
-        header {
-            border-bottom: 3px solid #0d6efd;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 22px;
-            color: #0d6efd;
-        }
-        header img {
-            height: 40px;
-        }
-        .meta {
-            font-size: 13px;
-            color: #555;
-            text-align: right;
-        }
-        .section {
-            margin-bottom: 25px;
-        }
-        .section h2 {
-            font-size: 16px;
-            border-left: 4px solid #0d6efd;
-            padding-left: 10px;
-            margin-bottom: 12px;
-            color: #0d6efd;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-        table th, table td {
-            border: 1px solid #e5e7eb;
-            padding: 8px 10px;
-            text-align: left;
-        }
-        table th {
-            background: #f1f5f9;
-            font-weight: 600;
-        }
-        .total {
-            text-align: right;
-            font-size: 16px;
-            font-weight: bold;
-            color: #0d6efd;
-        }
-        footer {
-            border-top: 1px solid #ddd;
-            margin-top: 30px;
-            padding-top: 10px;
-            font-size: 12px;
-            color: #666;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Receipt {{ receipt.receipt_number }}</title>
+  <style>
+  @page {
+      size: A4 portrait;
+      margin: 15mm;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color:#333;
+      padding: 0% 10%
+    }
+      /*font-size: 12px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }*/
+
+
+    .receipt-container {
+        max-width: 100%;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .header h1 {
+        margin: 0;
+        color: #f39c12;
+    }
+    .header p {
+        font-size: 0.9em;
+        color: #777;
+    }
+    .details, .summary {
+        margin-top: 20px;
+    }
+    .details table, .summary table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    .details th, .details td, 
+    .summary th, .summary td {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+    }
+    .details th {
+        background: #f9f9f9;
+        text-align: left;
+    }
+    .summary td {
+        text-align: right;
+    }
+    .summary tr:last-child td {
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+    .footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 0.8em;
+        color: #888;
+    }
+  </style>
 </head>
 <body>
-<div class="qbx-container">
-    <header>
-        <h1>QuariarBox Receipt</h1>
-        <div class="meta">
-            Receipt #: {{ receipt.receipt_number }} <br>
-            Issued: {{ receipt.issued_at|date:"M d, Y H:i" }}
-        </div>
-    </header>
-
-    <div class="section">
-        <h2>Customer Info</h2>
-        <p>
-            <strong>{{ receipt.payment.user.get_full_name|default:receipt.payment.user.username }}</strong><br>
-            Email: {{ receipt.payment.user.email }}
-        </p>
+  <div class="receipt-container">
+    <!-- Header -->
+    <div class="header">
+      <img src="{% static 'img/gallery/logo.png' %}" alt="QuariarBox Logo">
+      <h1>QuariarBox Courier</h1>
+      <p>Official Payment Receipt</p>
+      <p><strong>Receipt No:</strong> {{ receipt.receipt_number }}</p>
     </div>
 
-    <div class="section">
-        <h2>Shipment Info</h2>
-        <table>
-            <tr><th>Tracking Number</th><td>{{ receipt.payment.shipment.tracking_number }}</td></tr>
-            <tr><th>Status</th><td>{{ receipt.payment.shipment.status }}</td></tr>
-        </table>
+    <!-- Payment & User Details -->
+    <div class="details">
+      <table>
+        <tr>
+          <th>Customer</th>
+          <td>{{ receipt.payment.user.username }}</td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>{{ receipt.payment.user.email }}</td>
+        </tr>
+        <tr>
+          <th>Shipment Tracking</th>
+          <td>{{ receipt.payment.shipment.tracking_number }}</td>
+        </tr>
+        <tr>
+          <th>Issued At</th>
+          <td>{{ receipt.issued_at|date:"M d, Y H:i" }}</td>
+        </tr>
+        <tr>
+          <th>Transaction ID</th>
+          <td>{{ receipt.payment.transaction_id }}</td>
+        </tr>
+        <tr>
+          <th>Payment Method</th>
+          <td>{{ receipt.payment.method }}</td>
+        </tr>
+      </table>
     </div>
 
-    <div class="section">
-        <h2>Payment Details</h2>
-        <table>
-            <tr><th>Method</th><td>{{ receipt.payment.method }}</td></tr>
-            <tr><th>Transaction ID</th><td>{{ receipt.payment.transaction_id }}</td></tr>
-            <tr><th>Status</th><td>{{ receipt.payment.status }}</td></tr>
-            <tr><th>Amount</th><td>${{ receipt.payment.amount }}</td></tr>
-        </table>
-        <p class="total">Total Paid: ${{ receipt.payment.amount }}</p>
+    <!-- Summary -->
+    <div class="summary">
+      <table>
+        <tr>
+          <td>Shipment Weight</td>
+          <td>{{ receipt.payment.shipment.weight }} kg</td>
+        </tr>
+        <tr>
+          <td>Cost per kg</td>
+          <td>$0.01</td>
+        </tr>
+        <tr>
+          <td>Total Amount</td>
+          <td>${{ receipt.payment.amount }}</td>
+        </tr>
+      </table>
     </div>
 
-    <footer>
-        Thank you for choosing QuariarBox.  
-        This is a system-generated receipt.
-    </footer>
-</div>
+    <!-- Footer -->
+    <div class="footer">
+      <p>Thank you for choosing QuariarBox Courier.</p>
+      <p>This is a computer-generated receipt and does not require a signature.</p>
+    </div>
+  </div>
 </body>
 </html>

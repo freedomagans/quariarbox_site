@@ -96,7 +96,7 @@ class Receipt(models.Model):
         #Generate PDF after saving
         if not self.pdf:
             html_string = render_to_string("payments/receipt.html", {"receipt":self})
-            html = HTML(string=html_string)
+            html = HTML(string=html_string, base_url=f"http://127.0.0.1:8000/")
 
             with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as output:
                 html.write_pdf(target=output.name)

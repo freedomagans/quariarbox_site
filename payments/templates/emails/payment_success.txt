@@ -1,0 +1,12 @@
+Payment Successful 🎉
+
+Dear {{ shipment.user.username }},
+
+Your payment for the following shipment has been successfully processed.
+
+Tracking Number: {{ shipment.tracking_number }}
+
+You can view the shipment details and download your receipt here:
+{{ shipment_url }}
+
+Thank you for choosing QuariarBox Courier.

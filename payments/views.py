@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from weasyprint import HTML
 from .models import Receipt
 from django.http import HttpResponse
-
+from django.conf import settings
 # Create your views here.
 def process_payment_view(request, shipment_id):
     """
@@ -38,7 +38,7 @@ def download_receipt_pdf(request, pk):
     receipt = get_object_or_404(Receipt, pk=pk)
     html_string = render_to_string("payments/receipt.html", {"receipt": receipt})
 
-    pdf_file = HTML(string=html_string).write_pdf()
+    pdf_file = HTML(string=html_string, base_url=f"http://127.0.0.1:8000/").write_pdf()
     response = HttpResponse(pdf_file, content_type="application/pdf")
     response["Content-Disposition"] = f"attachment; filename='receipt_{receipt.receipt_number}.pdf"
     return response

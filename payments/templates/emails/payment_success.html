@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    .tracking-box {
+      background: #f4f9ff;
+      border: 1px solid #d6e9f8;
+      padding: 12px;
+      margin: 20px 0;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #0073e6;
+      text-align: center;
+      border-radius: 5px;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Payment Successful 🎉</h2>
+    <p>Dear {{ shipment.user.username }},</p>
+
+    <p>Your payment for the following shipment has been successfully processed:</p>
+
+    <div class="tracking-box">
+      Tracking Number: {{ shipment.tracking_number }}
+    </div>
+
+    <p>You can view the shipment details and download your receipt at the link below:</p>
+    <p><a href="{{ shipment_url }}" class="button">View Shipment</a></p>
+
+    <p>Thank you for choosing <strong>QuariarBox Courier</strong>. We’re excited to serve you!</p>
+  </div>
+</body>
+</html>
