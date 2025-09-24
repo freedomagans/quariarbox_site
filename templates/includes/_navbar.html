@@ -23,20 +23,20 @@
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
 
               <li class="nav-item px-2">
-                <a class="nav-link" aria-current="page" href="{% url 'home'%}">Home</a>
+                <a class="nav-link text-primary" aria-current="page" href="{% url 'home'%}">Home</a>
               </li>
 
               <li class="nav-item px-2">
-              <a class="nav-link" href="{% url 'shipments:track' %}">
+              <a class="nav-link text-primary" href="{% url 'shipments:track' %}">
             Track shipment 
           </a>
               </li>
 
               <li class="nav-item px-2">
                 {% if request.user.is_authenticated %}
-                  <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+                  <a class="nav-link text-primary" href="{% url 'users:logout' %}">Logout</a>
                 {% else %}
-                  <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+                  <a class="nav-link text-primary" href="{% url 'users:login' %}">Login</a>
                 {% endif %}
               </li>
 

@@ -12,17 +12,26 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+#initialise environment variables
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+
+#read from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, 'secrets.env'))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qv*bqzt7k!(!f!*nprm#9f0oeel6f5baihfho5b(=b%4^9rcd*'
-
+SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -45,6 +54,7 @@ INSTALLED_APPS = [
     'delivery.apps.DeliveryAppConfig',
     'notifications.apps.NotificationsConfig',
     'payments.apps.PaymentsConfig',
+
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -144,3 +154,9 @@ DEFAULT_FROM_EMAIL = "no-reply@quariarbox.com"
 
 # Add a base URL for absolute links
 SITE_URL = "http://127.0.0.1:8000"
+
+#flutterwave keys
+FLW_PUBLIC_KEY = env("FLW_PUBLIC_KEY")
+FLW_SECRET_KEY = env("FLW_SECRET_KEY")
+FLW_ENCRYPTION_KEY = env("FLW_ENCRYPTION_KEY")
+FLW_REDIRECT_URL = "http://127.0.0.1:8000/payments/flutterwave/callback/"

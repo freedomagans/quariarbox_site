@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <div class="card shadow-sm border-0 rounded-lg">
+            <div class="card shadow-sm border-0 rounded-lg" style="font-family:arial;">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">Shipment #{{ shipment.tracking_number }}</h5>
                 </div>
@@ -53,25 +53,25 @@
 
                 {% if request.user.profile.role == 'customer' %}
                 <div class="card-footer d-flex justify-content-between">
-                    <a href="{% url 'shipments:list' %}" class=" btn-primary btn-sm ">← Back to Shipments</a>
+                    <a href="{% url 'shipments:list' %}" class=" btn btn-primary btn-sm ">← Back to Shipments</a>
 
-                    {% if shipment.payments.status == "PENDING" or shipment.payments.status == "FAILED" or shipment.payments.status == "REFUNDED" %}
-                        <a href="{% url 'payments:process-payment' shipment.id %}" class="btn-info btn-sm text-white p-lg-2">
+                    {% if shipment.payments.status != 'PAID'%}
+                        <a href="{% url 'payments:initiate' shipment.payments.pk %}" class=" btn btn-info btn-sm text-white p-lg-2">
                             Pay Now
                         </a>
-                        {% elif shipment.payments.status == "PAID" %}
-                        <a href="{% url 'payments:receipt' shipment.id %}" class="btn-sm  btn-success">View Receipt</a>
-                         <a href="{% url 'payments:download-receipt' shipment.payments.receipt.pk %}" class="btn-sm  btn-success"><i class="fas fa-file-pdf fa-1x"></i> Download Receipt(PDF)</a>
+                        {% else %}
+                        <a href="{% url 'payments:receipt' shipment.id %}" class="btn btn-sm  btn-success">View Receipt</a>
+                         <a href="{% url 'payments:download-receipt' shipment.payments.receipt.pk %}" class="btn btn-sm  btn-success"><i class="fas fa-file-pdf fa-1x"></i> Download Receipt(PDF)</a>
                     {% endif %}
                 </div>
                 {% elif request.user.profile.role == 'courier' %}
                 <div class="card-footer d-flex justify-content-around">
-                    <a href="{% url 'delivery:list' %}" class=" btn-primary btn-sm">← Back to Deliveries</a>
+                    <a href="{% url 'delivery:list' %}" class=" btn btn-primary btn-sm">← Back to Deliveries</a>
 
                     {% if shipment.status == 'IN_TRANSIT' %}
-                    <a href="{% url 'delivery:delivered' shipment.id %}" class="btn-success btn-sm">Delivered Shipment ✔</a>
+                    <a href="{% url 'delivery:delivered' shipment.id %}" class="btn btn-success btn-sm">Delivered Shipment ✔</a>
                     {% elif shipment.status == 'PENDING' %}
-                    <a href="{% url 'delivery:accept' shipment.id %}" class="btn-primary btn-sm">Accept Shipment</a>
+                    <a href="{% url 'delivery:accept' shipment.id %}" class="btn btn-primary btn-sm">Accept Shipment</a>
                     {% endif %}
                 </div>
                 {% endif %}

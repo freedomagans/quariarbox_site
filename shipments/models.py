@@ -30,6 +30,9 @@ class Shipment(models.Model):
         self.status = 'IN_TRANSIT'
         self.save()
 
+    def calc_cost(self):
+        self.cost = float(self.weight) * 0.01
+
     def save(self, *args, **kwargs):
         # generating tracking_number for shipment
         if not self.tracking_number:
@@ -40,7 +43,7 @@ class Shipment(models.Model):
                     break
 
         # calculation for cost of shipment
-        self.cost = float(self.weight) * 0.01
+        self.calc_cost()
         super().save(*args, **kwargs)
 
     def __str__(self):

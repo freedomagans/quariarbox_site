@@ -50,7 +50,11 @@
                         <td>{{ shipment.destination_address }}</td>
                         <td>{{ shipment.status }}</td>
                         <td>{{ shipment.created_at|date:"Y-m-d H:i" }}</td>
-                        <td><a href="{% url 'shipments:update' shipment.id %}" class="text-primary">Update</a></td>
+                        <td>{%if shipment.status != 'DELIVERED' %}
+                            <a href="{% url 'shipments:update' shipment.id %}" class="text-primary">Update</a>
+                            {% else %} <span class="text-success">Delivered</span>
+                            {% endif %}
+                        </td>
                     </tr>
                     {% endfor %}
                     

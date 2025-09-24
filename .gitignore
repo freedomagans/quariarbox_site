@@ -16,7 +16,7 @@ static/
 
 #vscode
 .vscode/
-
+.idea/
 #system files
 .DS_Store
 Thumbs.db

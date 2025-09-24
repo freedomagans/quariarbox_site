@@ -74,6 +74,7 @@ class ShipmentUpdateView(LoginRequiredMixin,UpdateView):
 
     def form_valid(self, form):
         messages.success(self.request,f"Shipment {form.instance.tracking_number} updated.")
+        form.instance.calc_cost()
         return super().form_valid(form)
     
 

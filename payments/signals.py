@@ -1,3 +1,4 @@
+import uuid
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from shipments.models import Shipment
@@ -14,8 +15,20 @@ from django.template.loader import render_to_string
 #=========Notification for users=============
 @receiver(post_save,sender=Shipment)
 def create_payment_for_shipment(sender,instance,created, **kwargs):
-    if created and not hasattr(instance, "payments"):
+
+    instance.calc_cost()
+
+    if created:
         Payment.objects.create(user=instance.user, shipment=instance, amount=instance.cost)
+
+    else:
+        try:
+            payment = Payment.objects.get(user=instance.user, shipment=instance)
+            payment.amount = instance.cost
+            payment.save()
+        except Payment.DoesNotExist:
+            pass
+
 
 @receiver(post_save, sender=Payment)
 def on_payment_processing(sender,instance,**kwargs):

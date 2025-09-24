@@ -30,6 +30,7 @@ class Payment(models.Model):
     method = models.CharField(max_length=20, choices=METHOD_CHOICES, default="CARD")
     status = models.CharField(max_length=12, choices=STATUS_CHOICES, default="PENDING")
     transaction_id = models.CharField(max_length=128, blank=True, null=True)
+    tx_ref = models.CharField(max_length=100, unique=True, blank=True, null=True)
     meta = models.JSONField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -40,13 +41,12 @@ class Payment(models.Model):
     def __str__(self):
         return f"Payment for {self.shipment.tracking_number} - {self.status}"
     
-    def generate_transaction_id(self):
-        return uuid.uuid4().hex.upper()
+    def generate_tx_ref(self):
+            return f"QBX-{uuid.uuid4().hex[:10].upper()}"
     
     def mark_paid(self, transaction_id=None, meta=None, create_receipt=True):
-        if not transaction_id:
-            transaction_id = self.generate_transaction_id()
-        self.transaction_id = transaction_id
+        if transaction_id:
+            self.transaction_id = transaction_id
         if meta is not None:
             self.meta = meta 
         self.status = "PAID"
@@ -65,10 +65,44 @@ class Payment(models.Model):
 
         if meta is not None:
             self.meta = meta
-
         self.status = "FAILED"
         self.updated_at = timezone.now()
         self.save(update_fields=["transaction_id", "meta", "status", "updated_at"])
+
+
+    def get_flutterwave_payload(self):
+        """
+        Build the request payload for Flutterwave payment initialisation
+        """
+
+        return {
+            "tx_ref": self.tx_ref,
+            "amount": str(self.amount),
+            "currency": "NGN",
+            "redirect_url": settings.SITE_URL + reverse("payments:verify"),
+            "payment_options": "card,banktransfer",
+            "customer":{"email": self.user.email, "name": self.user.get_full_name() or self.user.username},
+            "customisations":{
+                "title": "QuariarBox Courier",
+                "description": f"Payment for shipment {self.shipment.tracking_number}",
+                "logo": settings.SITE_URL + "/static/img/gallery/logo.png"
+            }
+        }
+    def refresh_tx_ref(self):
+        """
+        Generate a new tx_ref and reset status to PENDING
+        """
+
+        self.tx_ref = self.generate_tx_ref()
+        self.status = "PENDING"
+        self.transaction_id = None
+        self.meta = None
+        self.save(update_fields=["tx_ref","status","transaction_id", "meta"])
+
+    def save(self, *args, **kwargs):
+        if not self.tx_ref:
+            self.tx_ref = self.generate_tx_ref()
+        super().save(*args, **kwargs)
 
 
 class Receipt(models.Model):
@@ -96,7 +130,7 @@ class Receipt(models.Model):
         #Generate PDF after saving
         if not self.pdf:
             html_string = render_to_string("payments/receipt.html", {"receipt":self})
-            html = HTML(string=html_string, base_url=f"http://127.0.0.1:8000/")
+            html = HTML(string=html_string, base_url=settings.SITE_URL)
 
             with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as output:
                 html.write_pdf(target=output.name)
