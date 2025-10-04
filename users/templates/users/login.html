@@ -4,12 +4,12 @@
 {% block content %}
 
 <div class=' mt-7 mb-3 card p-4 w-md-50 shadow-sm' style="margin:auto">
-<form method="post" style="margin:auto;width:60%">
-    {% csrf_token %}
-    {{ form|crispy }}
-     <input type="hidden" name="next" value="{{ request.GET.next }}">
-    <input type="submit" value="Login" class="btn btn-primary" style="margin-left:100px">
-</form>
+    <form method="post" style="margin:auto;width:60%">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <input type="submit" value="Login" class="btn btn-primary" style="margin-left:100px">
+    </form>
 </div>
 
 {% endblock %}

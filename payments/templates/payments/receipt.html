@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Receipt {{ receipt.receipt_number }}</title>
-  <style>
+    <meta charset="UTF-8">
+    <title>Receipt {{ receipt.receipt_number }}</title>
+    <style>
   @page {
       size: A4 portrait;
       margin: 15mm;
@@ -72,71 +72,72 @@
         font-size: 0.8em;
         color: #888;
     }
-  </style>
+
+    </style>
 </head>
 <body>
-  <div class="receipt-container">
+<div class="receipt-container">
     <!-- Header -->
     <div class="header">
-      <img src="{% static 'img/gallery/logo.png' %}" alt="QuariarBox Logo">
-      <h1>QuariarBox Courier</h1>
-      <p>Official Payment Receipt</p>
-      <p><strong>Receipt No:</strong> {{ receipt.receipt_number }}</p>
+        <img src="{% static 'img/gallery/logo.png' %}" alt="QuariarBox Logo">
+        <h1>QuariarBox Courier</h1>
+        <p>Official Payment Receipt</p>
+        <p><strong>Receipt No:</strong> {{ receipt.receipt_number }}</p>
     </div>
 
     <!-- Payment & User Details -->
     <div class="details">
-      <table>
-        <tr>
-          <th>Customer</th>
-          <td>{{ receipt.payment.user.username }}</td>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <td>{{ receipt.payment.user.email }}</td>
-        </tr>
-        <tr>
-          <th>Shipment Tracking</th>
-          <td>{{ receipt.payment.shipment.tracking_number }}</td>
-        </tr>
-        <tr>
-          <th>Issued At</th>
-          <td>{{ receipt.issued_at|date:"M d, Y H:i" }}</td>
-        </tr>
-        <tr>
-          <th>Transaction ID</th>
-          <td>{{ receipt.payment.transaction_id }}</td>
-        </tr>
-        <tr>
-          <th>Payment Method</th>
-          <td>{{ receipt.payment.method }}</td>
-        </tr>
-      </table>
+        <table>
+            <tr>
+                <th>Customer</th>
+                <td>{{ receipt.payment.user.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ receipt.payment.user.email }}</td>
+            </tr>
+            <tr>
+                <th>Shipment Tracking</th>
+                <td>{{ receipt.payment.shipment.tracking_number }}</td>
+            </tr>
+            <tr>
+                <th>Issued At</th>
+                <td>{{ receipt.issued_at|date:"M d, Y H:i" }}</td>
+            </tr>
+            <tr>
+                <th>Transaction ID</th>
+                <td>{{ receipt.payment.transaction_id }}</td>
+            </tr>
+            <tr>
+                <th>Payment Method</th>
+                <td>{{ receipt.payment.method }}</td>
+            </tr>
+        </table>
     </div>
 
     <!-- Summary -->
     <div class="summary">
-      <table>
-        <tr>
-          <td>Shipment Weight</td>
-          <td>{{ receipt.payment.shipment.weight }} kg</td>
-        </tr>
-        <tr>
-          <td>Cost per kg</td>
-          <td>$0.01</td>
-        </tr>
-        <tr>
-          <td>Total Amount</td>
-          <td>${{ receipt.payment.amount }}</td>
-        </tr>
-      </table>
+        <table>
+            <tr>
+                <td>Shipment Weight</td>
+                <td>{{ receipt.payment.shipment.weight }} kg</td>
+            </tr>
+            <tr>
+                <td>Cost per kg</td>
+                <td>$0.01</td>
+            </tr>
+            <tr>
+                <td>Total Amount</td>
+                <td>${{ receipt.payment.amount }}</td>
+            </tr>
+        </table>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-      <p>Thank you for choosing QuariarBox Courier.</p>
-      <p>This is a computer-generated receipt and does not require a signature.</p>
+        <p>Thank you for choosing QuariarBox Courier.</p>
+        <p>This is a computer-generated receipt and does not require a signature.</p>
     </div>
-  </div>
+</div>
 </body>
 </html>

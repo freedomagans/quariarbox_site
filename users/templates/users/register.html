@@ -4,11 +4,11 @@
 {% block content %}
 
 <div class='mt-7 mb-3 card p-4 w-md-50 shadow-sm' style="margin:auto">
-<form method="post" style="margin:auto">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type="submit" value="submit" class='btn btn-primary' style="margin-bottom:15px">
-</form>
+    <form method="post" style="margin:auto">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="submit" class='btn btn-primary' style="margin-bottom:15px">
+    </form>
 </div>
 
 {% endblock %}

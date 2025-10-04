@@ -1,48 +1,48 @@
 {% load static %}
 <section class="py-xxl-10 pb-0" id="home">
-  <div class="bg-holder bg-size" 
-       style="background-image:url({% static 'img/gallery/hero-header-bg.png' %});
+    <div class="bg-holder bg-size"
+         style="background-image:url({% static 'img/gallery/hero-header-bg.png' %});
               background-position:top center;
               background-size:cover;">
-  </div>
-  <!--/.bg-holder-->
-
-  <div class="container">
-    <div class="row align-items-center">
-
-      <!-- IMAGE COLUMN (mobile: first, desktop: right) -->
-      <div class="col-md-5 col-xl-6 col-xxl-7 order-0 order-md-1 text-center text-md-end">
-        <img class="pt-7 pt-md-0 w-100" src="{% static 'img/illustrations/hero.png' %}" alt="hero-header"/>
-      </div>
-
-      <!-- INFO COLUMN (mobile: second, desktop: left) -->
-      <div class="col-md-7 col-xl-6 col-xxl-5 order-1 order-md-0 text-center text-md-start py-4">
-        <h1 class="fw-normal fs-6 fs-xxl-7">A trusted provider of </h1>
-        <h1 class="fw-bolder fs-6 fs-xxl-7 mb-2">courier services.</h1>
-
-        <p class="fs-1 mb-5">
-          We deliver your products safely to 
-          <br/>
-          your home in a reasonable time.
-        </p>
-
-        {% if not request.user.is_authenticated %}
-          <a class="btn btn-primary me-2" href="{% url 'users:register' %}" role="button">
-            Get started<i class="fas fa-arrow-right ms-2"></i>
-          </a>
-        {% endif %}
-
-        {% if request.user.profile.role == "customer" %}
-          <a class="btn btn-primary me-2" href="{% url 'shipments:create' %}" role="button">
-            Create Shipment <i class="fas fa-arrow-right ms-2"></i>
-          </a>
-
-          <a class="btn btn-primary me-2" href="{% url 'delivery:create' %}" role="button">
-            Become a Courier<i class="fas fa-arrow-right ms-2"></i>
-          </a>
-        {% endif %}
-      </div>
-
     </div>
-  </div>
+    <!--/.bg-holder-->
+
+    <div class="container">
+        <div class="row align-items-center">
+
+            <!-- IMAGE COLUMN (mobile: first, desktop: right) -->
+            <div class="col-md-5 col-xl-6 col-xxl-7 order-0 order-md-1 text-center text-md-end">
+                <img class="pt-7 pt-md-0 w-100" src="{% static 'img/illustrations/hero.png' %}" alt="hero-header"/>
+            </div>
+
+            <!-- INFO COLUMN (mobile: second, desktop: left) -->
+            <div class="col-md-7 col-xl-6 col-xxl-5 order-1 order-md-0 text-center text-md-start py-4">
+                <h1 class="fw-normal fs-6 fs-xxl-7">A trusted provider of </h1>
+                <h1 class="fw-bolder fs-6 fs-xxl-7 mb-2">courier services.</h1>
+
+                <p class="fs-1 mb-5">
+                    We deliver your products safely to
+                    <br/>
+                    your home in a reasonable time.
+                </p>
+
+                {% if not request.user.is_authenticated %}
+                <a class="btn btn-primary me-2" href="{% url 'users:register' %}" role="button">
+                    Get started<i class="fas fa-arrow-right ms-2"></i>
+                </a>
+                {% endif %}
+
+                {% if request.user.profile.role == "customer" %}
+                <a class="btn btn-primary me-2" href="{% url 'shipments:create' %}" role="button">
+                    Create Shipment <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+
+                <a class="btn btn-primary me-2" href="{% url 'delivery:create' %}" role="button">
+                    Become a Courier<i class="fas fa-arrow-right ms-2"></i>
+                </a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
 </section>

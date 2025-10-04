@@ -1,28 +1,28 @@
+"""defining signals for the payments app"""
 import uuid
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from shipments.models import Shipment
 from .models import Payment
-from notifications.models import Notification 
+from notifications.models import Notification
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.conf import settings 
+from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
 
-
-#=========Notification for users=============
-@receiver(post_save,sender=Shipment)
-def create_payment_for_shipment(sender,instance,created, **kwargs):
-
-    instance.calc_cost()
+# signal for creating a pending payment instance(row) on Shipment creation
+@receiver(post_save, sender=Shipment)
+def create_payment_for_shipment(sender, instance, created, **kwargs):
+    instance.calc_cost()  # gets cost for instance
 
     if created:
         Payment.objects.create(user=instance.user, shipment=instance, amount=instance.cost)
 
     else:
         try:
+            """updates cost value on update of Payment model instance(row)"""
             payment = Payment.objects.get(user=instance.user, shipment=instance)
             payment.amount = instance.cost
             payment.save()
@@ -30,18 +30,19 @@ def create_payment_for_shipment(sender,instance,created, **kwargs):
             pass
 
 
-@receiver(post_save, sender=Payment)
-def on_payment_processing(sender,instance,**kwargs):
-    if instance.status == 'PAID':
+# =========Notification for users=============
 
-        #User notification
+# signal for Notifying user on updating Payment instance status
+@receiver(post_save, sender=Payment)
+def on_payment_processing(sender, instance, **kwargs):
+    if instance.status == 'PAID':
+        # Notify User on successful payment
         Notification.objects.create(
             recipient=instance.user,
             message=f"Payment was successful click to view receipt",
-            link=reverse("payments:receipt",kwargs={"shipment_id":instance.shipment.id})
+            link=reverse("payments:receipt", kwargs={"shipment_id": instance.shipment.id})
         )
-
-        #admin notification
+        # notify all admins on users sucessful payment
         admins = User.objects.filter(is_superuser=True)
         for admin in admins:
             Notification.objects.create(
@@ -51,10 +52,11 @@ def on_payment_processing(sender,instance,**kwargs):
             )
 
     if instance.status == "FAILED":
+        # Notify user on failed payment
         Notification.objects.create(
             recipient=instance.user,
-            message=f"Payment for shipment {instance.shipment.tracking_number} Failed!!", 
-            link=reverse("shipments:detail", kwargs={"pk":instance.shipment.id})
+            message=f"Payment for shipment {instance.shipment.tracking_number} Failed!!",
+            link=reverse("shipments:detail", kwargs={"pk": instance.shipment.id})
         )
 
 
@@ -68,24 +70,24 @@ def send_payment_success_email(sender, instance, created, **kwargs):
         user = instance.user
         shipment = instance.shipment
 
-        #Absolute URL for shipment detail
+        # Absolute URL for shipment detail
         shipment_url = settings.SITE_URL + reverse("shipments:detail", args=[shipment.pk])
 
         # Render HTML + plain text 
         context = {
-            "user": user, 
+            "user": user,
             "shipment": shipment,
             "payment": instance,
             "shipment_url": shipment_url,
-        }
+        }  # context for email
 
-        subject = f"Payment Confirmation - Shipment {shipment.tracking_number}"
-        from_email = settings.DEFAULT_FROM_EMAIL
-        to = [user.email]
-        html_content = render_to_string("emails/payment_success.html", context)
-        text_content = render_to_string("emails/payment_success.txt", context)
+        subject = f"Payment Confirmation - Shipment {shipment.tracking_number}"  # subject of email
+        from_email = settings.DEFAULT_FROM_EMAIL  # sender email
+        to = [user.email]  # email of recipient
+        html_content = render_to_string("emails/payment_success.html", context)  # html content for email
+        text_content = render_to_string("emails/payment_success.txt", context)  # text string content for email
 
-        msg = EmailMultiAlternatives(subject, text_content,from_email,to)
-        msg.attach_alternative(html_content, "text/html")
-        msg.send()
-        
+        msg = EmailMultiAlternatives(subject, text_content, from_email, to)  # used for sending multipart emails
+        # (html and text content)
+        msg.attach_alternative(html_content, "text/html")  # attaches the html content
+        msg.send()  # sends email

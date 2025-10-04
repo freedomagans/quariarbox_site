@@ -14,17 +14,15 @@ from pathlib import Path
 import os
 import environ
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-#initialise environment variables
+# initialise environment variables
 env = environ.Env(
     DEBUG=(bool, False)
 )
 
-#read from .env file
+# read from .env file
 environ.Env.read_env(os.path.join(BASE_DIR, 'secrets.env'))
 
 # Quick-start development settings - unsuitable for production
@@ -35,8 +33,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '*' ]
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -59,7 +56,6 @@ INSTALLED_APPS = [
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -91,17 +87,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'courier_site_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# using django-environ to load database details stored in secrets.env
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db()
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -121,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
@@ -133,18 +124,19 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+#static settings
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [ BASE_DIR / "static"]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# media settings
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -155,8 +147,29 @@ DEFAULT_FROM_EMAIL = "no-reply@quariarbox.com"
 # Add a base URL for absolute links
 SITE_URL = "http://127.0.0.1:8000"
 
-#flutterwave keys
+# flutterwave keys loaded from .env
 FLW_PUBLIC_KEY = env("FLW_PUBLIC_KEY")
 FLW_SECRET_KEY = env("FLW_SECRET_KEY")
 FLW_ENCRYPTION_KEY = env("FLW_ENCRYPTION_KEY")
 FLW_REDIRECT_URL = "http://127.0.0.1:8000/payments/flutterwave/callback/"
+FLW_SECRET_HASH = env("FLW_SECRET_HASH")
+
+# logging config
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'flutterwave_webhook.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

@@ -1,4 +1,4 @@
-from django.contrib import admin
+from django.contrib import admin  # django's admin class
 from .models import Notification
-# Register your models here.
-admin.site.register(Notification)
+
+admin.site.register(Notification)  # registers the Notification Model

@@ -6,4 +6,4 @@ class DeliveryAppConfig(AppConfig):
     name = 'delivery'
 
     def ready(self):
-        import delivery.signals
+        import delivery.signals  # calls signals when necessary

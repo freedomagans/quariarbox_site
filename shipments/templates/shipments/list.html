@@ -3,79 +3,88 @@
 
 {% block content %}
 <div class="container mt-7 mb-3 ">
-    
+
     <div class="d-flex justify-content-between align-items-center mb-3">
+        <form method="get" class="d-flex align-items-center">
+            <input type="hidden" name="q" value="{{ query }}">
 
+            <select name="status" class="form-select form-select-sm me-2">
+                <option value="ALL"
+                 {% if selected_status == "ALL" %}
+                 selected 
+                 {% endif %} >All</option>
+                {% for value, label in status_choices %}
+                <option value="{{ value }}" 
+                    {% if selected_status == value %}
+                    selected
+                    {% endif %} >{{ label }}</option>
+                {% endfor %}
+            </select>
 
-  <form method="get" class="d-flex align-items-center">
-    <input type="hidden" name="q" value="{{ query }}">
+            <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+        </form>
 
-    <select name="status" class="form-select form-select-sm me-2">
-      <option value="ALL" {% if selected_status == "ALL" %}selected{% endif %}>All</option>
-      {% for value, label in status_choices %}
-        <option value="{{ value }}" {% if selected_status == value %}selected{% endif %}>{{ label }}</option>
-      {% endfor %}
-    </select>
+        <a class="btn btn-secondary" href="{% url 'payments:payments-history' %} " style="position:relative;top:55px">payment
+            history</a>
 
-    <button type="submit" class="btn btn-primary btn-sm">Filter</button>
-  </form>
-</div>
-    
+    </div>
+
     <form method="post" action="{% url 'shipments:delete' %}">
         {% csrf_token %}
-        <div class="table-responsive">
-            <input type="submit" class="btn btn-primary mb-2 " value="Delete selected"/>
+        <input type="submit" class="btn btn-primary mb-2 " value="Delete selected"/>
 
-            <table class="table table-striped table-bordered bg-white ">
-                <thead>
-                    <tr>
-                        <th>
-                            <input type="checkbox" id="select_all">
-                            Tracking ID
-                        </th>
-                        <th>Origin</th>
-                        <th>Destination</th>
-                        <th>Status</th>
-                        <th>Created</th>
-                    <tr>
-                </thead>
-                <tbody>
-                    {% for shipment in shipments %}
-                    <tr>
-                        
-                        <td>
-                            <input type="checkbox" value="{{ shipment.id }}" name="shipments">
-                            <a href="{% url 'shipments:detail' shipment.id %}" class="text-primary">{{ shipment.tracking_number }}</a></td>
-                        <td>{{ shipment.origin_address }}</td>
-                        <td>{{ shipment.destination_address }}</td>
-                        <td>{{ shipment.status }}</td>
-                        <td>{{ shipment.created_at|date:"Y-m-d H:i" }}</td>
-                        <td>{%if shipment.status != 'DELIVERED' %}
-                            <a href="{% url 'shipments:update' shipment.id %}" class="text-primary">Update</a>
-                            {% else %} <span class="text-success">Delivered</span>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    
-                    {% if shipments|length == 0 %}
-                        <tr> <td colspan="8" class="text-center">
-                            No Shipments Found
-                             <a class="btn btn-primary p-1" href="{% url 'shipments:create' %}" role="button">
-                            Create Shipment <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </td></tr>
+        <table class="table table-responsive table-striped table-bordered bg-white ">
+            <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="select_all">
+                    Tracking ID
+                </th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Status</th>
+                <th>Created</th>
+            <tr>
+            </thead>
+            <tbody>
+            {% for shipment in shipments %}
+            <tr>
 
+                <td>
+                    <input type="checkbox" value="{{ shipment.id }}" name="shipments">
+                    <a href="{% url 'shipments:detail' shipment.id %}" class="text-primary">{{ shipment.tracking_number}}</a></td>
+                <td>{{ shipment.origin_address }}</td>
+                <td>{{ shipment.destination_address }}</td>
+                <td>{{ shipment.status }}</td>
+                <td>{{ shipment.created_at|date:"Y-m-d H:i" }}</td>
+                <td>{%if shipment.status != 'DELIVERED' %}
+                    <a href="{% url 'shipments:update' shipment.id %}" class="text-primary">Update</a>
+                    {% else %} <span class="text-success">Delivered</span>
                     {% endif %}
-                    
-                </tbody>
-            </table>
-        </div>
-</form>
+                </td>
+            </tr>
+            {% endfor %}
+
+            {% if shipments|length == 0 %}
+            <tr>
+                <td colspan="8" class="text-center">
+                    No Shipments Found
+                    <a class="btn btn-primary p-1" href="{% url 'shipments:create' %}" role="button">
+                        Create Shipment <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </td>
+            </tr>
+
+            {% endif %}
+
+            </tbody>
+        </table>
+    </form>
 </div>
 
 <style>
     table{font-family:"fira code";font-size:14px}
+
 </style>
 
 <script>
@@ -83,5 +92,6 @@ document.getElementById("select_all").addEventListener("click", function(e) {
     let checkboxes = document.querySelectorAll('input[name="shipments"]');
     checkboxes.forEach(cb => cb.checked = e.target.checked);
 });
+
 </script>
 {% endblock %}

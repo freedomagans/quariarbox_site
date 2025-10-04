@@ -1,0 +1,51 @@
+<!-- templates/payments/payment_history.html -->
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="container mt-7">
+    <h4>Your Payment History</h4>
+    <table class="table table-responsive table-striped mt-3 bg-white" style="font-family:arial;">
+        <thead>
+        <tr>
+            <th>Receipt</th>
+            <th>Shipment</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Receipt PDF</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for payment in payments %}
+        <tr>
+            <td>{{ payment.receipt.receipt_number }}</td>
+            <td>{{ payment.shipment.tracking_number }}</td>
+            <td>${{ payment.amount }}</td>
+            <td>
+                {% if payment.status == "PAID" %}
+                <span class="badge bg-success">Paid</span>
+                {% elif payment.status == "FAILED" %}
+                <span class="badge bg-danger">Failed</span>
+                {% else %}
+                <span class="badge bg-secondary">{{ payment.status }}</span>
+                {% endif %}
+            </td>
+            <td>{{ payment.created_at|date:"M d, Y H:i" }}</td>
+            <td>
+                {% if payment.receipt %}
+                <a href="{% url 'payments:download-receipt' payment.receipt.pk %}"
+                   class="btn btn-sm btn-outline-primary">Download</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="text-center">No payments found</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

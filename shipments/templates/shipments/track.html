@@ -2,44 +2,47 @@
 
 {% block content %}
 <div class="container m-auto py-3 mt-7 w-md-50 ms-auto">
- 
-<h2 class="mb-4">Track Your Shipment</h2>
-  <form method="post" class="mb-4">
-    {% csrf_token %}
-    <div class="input-group">
-      <input type="text" name="tracking_number" class="form-control" placeholder="Enter Tracking Number" required>
-      <button class="btn btn-primary" type="submit">Track</button>
-    </div>
-  </form>
 
-  {% if error %}
+    <h2 class="mb-4">Track Your Shipment</h2>
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" name="tracking_number" class="form-control" placeholder="Enter Tracking Number" required>
+            <button class="btn btn-primary" type="submit">Track</button>
+        </div>
+    </form>
+
+    {% if error %}
     <div class="alert alert-danger">{{ error }}</div>
-  {% endif %}
+    {% endif %}
 
-  {% if shipment %}
+    {% if shipment %}
     <div class="card shadow-sm p-3">
-      <h5>Shipment: {{ shipment.tracking_number }}</h5>
+        <h5>Shipment: {{ shipment.tracking_number }}</h5>
 
-      <!-- Progress bar -->
-      <div class="progress mb-3" style="height: 30px;">
-      <div class="progress-bar {% if shipment.status == 'PENDING' %}bg-success{% else %}bg-light text-dark{% endif %}" style="width:33.3%">
-      PENDING
-      </div>
-      <div class="progress-bar {% if shipment.status in 'IN_TRANSIT' %}bg-success{% else %}bg-light text-dark{% endif %}" style="width:33.3%">
-      IN TRANSIT
-      </div>
-      <div class="progress-bar {% if shipment.status == 'DELIVERED' %}bg-success{% else %}bg-light text-dark{% endif %}" style="width:33.3%">
-      DELIVERED
-      </div>
-    </div>
+        <!-- Progress bar -->
+        <div class="progress mb-3" style="height: 30px;">
+            <div class="progress-bar {% if shipment.status == 'PENDING' %}bg-success{% else %}bg-light text-dark{% endif %}"
+                 style="width:33.3%">
+                PENDING
+            </div>
+            <div class="progress-bar {% if shipment.status in 'IN_TRANSIT' %}bg-success{% else %}bg-light text-dark{% endif %}"
+                 style="width:33.3%">
+                IN TRANSIT
+            </div>
+            <div class="progress-bar {% if shipment.status == 'DELIVERED' %}bg-success{% else %}bg-light text-dark{% endif %}"
+                 style="width:33.3%">
+                DELIVERED
+            </div>
+        </div>
 
-      <!-- Shipment details -->
-      <p><strong>Status:</strong> {{ shipment.status }}</p>
-      <p><strong>Origin:</strong> {{ shipment.origin_address }}</p>
-      <p><strong>Destination:</strong> {{ shipment.destination_address }}</p>
-      <p><strong>Weight:</strong> {{ shipment.weight }} kg</p>
-      <p><strong>Created:</strong> {{ shipment.created_at|date:"M d, Y H:i" }}</p>
+        <!-- Shipment details -->
+        <p><strong>Status:</strong> {{ shipment.status }}</p>
+        <p><strong>Origin:</strong> {{ shipment.origin_address }}</p>
+        <p><strong>Destination:</strong> {{ shipment.destination_address }}</p>
+        <p><strong>Weight:</strong> {{ shipment.weight }} kg</p>
+        <p><strong>Created:</strong> {{ shipment.created_at|date:"M d, Y H:i" }}</p>
     </div>
-  {% endif %}
+    {% endif %}
 </div>
 {% endblock %}

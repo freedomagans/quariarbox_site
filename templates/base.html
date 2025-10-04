@@ -3,23 +3,22 @@
 {% include 'includes/_navbar.html' %}
 
 
-
 <main>
 
     <!--  a designed alert box to render the django message alerts -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}">
     {% if messages %}
-  <div class="container mt-6" id="qbx-messages">
-    {% for message in messages %}
-      <div class="qbx-alert qbx-{{ message.tags }}">
-        <span>{{ message }}</span>
-        <button type="button" class="qbx-close" onclick="this.parentElement.remove();">&times;</button>
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+    <div class="container mt-6" id="qbx-messages">
+        {% for message in messages %}
+        <div class="qbx-alert qbx-{{ message.tags }}">
+            <span>{{ message }}</span>
+            <button type="button" class="qbx-close" onclick="this.parentElement.remove();">&times;</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
-<script>
+    <script>
   // Auto-dismiss alerts after 5 seconds
   document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
@@ -30,12 +29,13 @@
       });
     }, 5000);
   });
-</script>
+
+    </script>
     {% block content %}
-    
+
     {% endblock %}
 </main>
- <!-- Extra links section -->
+<!-- Extra links section -->
 {% include 'includes/_link_section.html' %}
 
 {% include 'includes/_footer.html' %}

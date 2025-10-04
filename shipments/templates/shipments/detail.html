@@ -17,11 +17,11 @@
                             <h6 class="text-muted">Sender</h6>
                             <p>{{ shipment.user.username }}</p>
                         </div>
-                         <div class="col-4">
+                        <div class="col-4">
                             <h6 class="text-muted">Pickup Address</h6>
                             <p>{{ shipment.origin_address }}</p>
                         </div>
-                         <div class="col-4">
+                        <div class="col-4">
                             <h6 class="text-muted">Recipient Address</h6>
                             <p>{{ shipment.destination_address }}</p>
                         </div>
@@ -56,12 +56,14 @@
                     <a href="{% url 'shipments:list' %}" class=" btn btn-primary btn-sm ">← Back to Shipments</a>
 
                     {% if shipment.payments.status != 'PAID'%}
-                        <a href="{% url 'payments:initiate' shipment.payments.pk %}" class=" btn btn-info btn-sm text-white p-lg-2">
-                            Pay Now
-                        </a>
-                        {% else %}
-                        <a href="{% url 'payments:receipt' shipment.id %}" class="btn btn-sm  btn-success">View Receipt</a>
-                         <a href="{% url 'payments:download-receipt' shipment.payments.receipt.pk %}" class="btn btn-sm  btn-success"><i class="fas fa-file-pdf fa-1x"></i> Download Receipt(PDF)</a>
+                    <a href="{% url 'payments:initiate' shipment.payments.pk %}"
+                       class=" btn btn-info btn-sm text-white p-lg-2">
+                        Pay Now
+                    </a>
+                    {% else %}
+                    <a href="{% url 'payments:receipt' shipment.id %}" class="btn btn-sm  btn-success">View Receipt</a>
+                    <a href="{% url 'payments:download-receipt' shipment.payments.receipt.pk %}"
+                       class="btn btn-sm  btn-success"><i class="fas fa-file-pdf fa-1x"></i> Download Receipt(PDF)</a>
                     {% endif %}
                 </div>
                 {% elif request.user.profile.role == 'courier' %}
@@ -69,7 +71,8 @@
                     <a href="{% url 'delivery:list' %}" class=" btn btn-primary btn-sm">← Back to Deliveries</a>
 
                     {% if shipment.status == 'IN_TRANSIT' %}
-                    <a href="{% url 'delivery:delivered' shipment.id %}" class="btn btn-success btn-sm">Delivered Shipment ✔</a>
+                    <a href="{% url 'delivery:delivered' shipment.id %}" class="btn btn-success btn-sm">Delivered
+                        Shipment ✔</a>
                     {% elif shipment.status == 'PENDING' %}
                     <a href="{% url 'delivery:accept' shipment.id %}" class="btn btn-primary btn-sm">Accept Shipment</a>
                     {% endif %}
