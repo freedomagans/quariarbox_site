@@ -1,0 +1,18 @@
+[run]
+omit =
+    /tests/
+    /test_.py
+    /migrations/
+    */admin.py
+    */apps.py
+    manage.py
+    */_init_.py
+    */wsgi.py
+    */asgi.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def _str_
+    if settings.DEBUG
+    if _name_ == ._main_.:

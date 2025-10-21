@@ -52,7 +52,7 @@ class Payment(models.Model):
 
     class Meta:
         """save instances in order of most recent"""
-        ordering = ["-created_at"]  # desc order
+        ordering = ["-created_at", '-id']  # desc order
 
     def __str__(self):
         return f"Payment for {self.shipment.tracking_number} - {self.status}"
@@ -81,7 +81,14 @@ class Payment(models.Model):
 
         receipt = None
         if create_receipt:
-            receipt = Receipt.objects.create(payment=self)  # generate receipt instance
+            """ 
+            get receipt if payment instance has a receipt 
+            but if it doen't generate one 
+            """
+            try:
+                receipt = Receipt.objects.get(payment=self) # get receipt for payment 
+            except Receipt.DoesNotExist:
+                receipt = Receipt.objects.create(payment=self)  # generate receipt instance
         return receipt  # return receipt instance
 
     def mark_failed(self, transaction_id=None, meta=None):
@@ -192,4 +199,4 @@ class Receipt(models.Model):
 
     def get_absolute_url(self):
         """returns the receipt page for the receipt instance"""
-        return reverse("payments:receipt", kwargs={"pk": self.pk})
+        return reverse("payments:receipt", kwargs={"shipment_id": self.payment.shipment.pk})

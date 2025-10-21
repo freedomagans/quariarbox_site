@@ -28,7 +28,7 @@ import logging
 @login_required(login_url="users:login")  # login page if not authenticated (using decorators)
 def receipt_view(request, shipment_id):
     """ processes request for receipt page """
-    shipment = Shipment.objects.get(id=shipment_id)  # gets shipment instance
+    shipment = get_object_or_404(Shipment,id=shipment_id, user=request.user)  # gets shipment instance
     receipt = shipment.payments.receipt  # gets the receipt instance for that related shipment instance
     return render(request, "payments/receipt.html", {"receipt": receipt})  # renders the receipt  page
 
@@ -36,7 +36,7 @@ def receipt_view(request, shipment_id):
 @login_required(login_url="users:login")  # login page if not authenticated (using decorators)
 def download_receipt_pdf(request, pk):
     """process requests to download receipts """
-    receipt = get_object_or_404(Receipt, pk=pk)  # gets receipt instance
+    receipt = get_object_or_404(Receipt, pk=pk, payment__user=request.user)  # gets receipt instance
     html_string = render_to_string("payments/receipt.html", {"receipt": receipt})  # parses html template to string
 
     pdf_file = HTML(string=html_string, base_url=request.build_absolute_uri(
@@ -75,25 +75,36 @@ def initiate_payment_view(request, pk):
     }  # set header content for flutterwave authentication
 
     url = "https://api.flutterwave.com/v3/payments"  # flutterwave api endpoint
-    response = requests.post(url, json=payload, headers=headers)  # posts payload and headers to flutterwave api
-    # endpoint
-    data = response.json()  # retrieve metadata in json format from flutterwave api endpoint
+    
+    try:
+        response = requests.post(url, json=payload, headers=headers)  # posts payload and headers to flutterwave api
+        # endpoint
+        data = response.json()  # retrieve metadata in json format from flutterwave api endpoint
 
-    if data.get("status") == "success":
-        """ on successful initialisation of payment route to flutterwave payment page (checkout page)"""
-        checkout_url = data["data"]["link"]  # retrieves the checkout page url
-        return redirect(checkout_url)  # redirects to flutterwave checkout age
-    else:
-        """on failed initialisation show error message """
-        messages.error(request, "Error initialising payment. Please try again.")  # sends message to displayed page
-        return redirect("shipments:detail", pk=payment.shipment.pk)  # redirect to shipment detail page
-
+        if data.get("status") == "success":
+            """ on successful initialisation of payment route to flutterwave payment page (checkout page)"""
+            checkout_url = data["data"]["link"]  # retrieves the checkout page url
+            return redirect(checkout_url)  # redirects to flutterwave checkout age
+        else:
+            """on failed initialisation show error message """
+            messages.error(request, "Error initialising payment. Please try again.")  # sends message to displayed page
+            return redirect("shipments:detail", pk=payment.shipment.pk)  # redirect to shipment detail page
+    except ValueError:
+        # handles .json() decoding failure 
+        messages.error(request, 'Received invalid response from payment gateway')
+        return redirect('shipments:detail', pk=payment.shipment.pk)
+    except Exception as e:
+        # handles network errors, timeouts , etc.
+        messages.error(request, f"Error connecting to payment gateway: {e}")
+        return redirect('shipments:detail', pk=payment.shipment.pk)
 
 @login_required(login_url="users:login")  # login page if not authenticated(using decorators)
 def verify_payment_view(request):
     """
     processes  Flutterwave redirect after payment and verifies transaction status.
     """
+
+    
 
     status = request.GET.get("status")  # get status parameter from flutterwave
     tx_ref = request.GET.get("tx_ref")  # get tx_ref value from flutterwave
@@ -110,9 +121,16 @@ def verify_payment_view(request):
     # Verify payment with flutterwave API
     url = f"https://api.flutterwave.com/v3/transactions/{transaction_id}/verify"  # verification api
     headers = {"Authorization": f"Bearer {settings.FLW_SECRET_KEY}"}  # authenticating
-    response = requests.get(url, headers=headers)  # post header to verification api url
-    data = response.json()  # retrieve metadata from response
 
+    try:
+        response = requests.get(url, headers=headers)  # post header to verification api url
+        data = response.json()  # retrieve metadata from response
+    except Exception as e:
+        logger.error(f"Error verifying payment: {e}")
+        payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+        messages.error(request, "Payment verification failed. Please contact support.")
+        return redirect("shipments:detail", pk=payment.shipment.pk)
+    
     if data.get("status") == "success" and data["data"]["tx_ref"] == tx_ref:
         """check if payment successful on flutterwave api 
             and the tx_ref values are the same 
@@ -133,7 +151,7 @@ def verify_payment_view(request):
 logger = logging.getLogger(__name__)  # setting logger
 
 
-@csrf_exempt
+@csrf_exempt 
 @require_POST
 def flutterwave_webhook_view(request):
     """
@@ -166,21 +184,30 @@ def flutterwave_webhook_view(request):
                 payment.mark_paid(transaction_id=transaction_id, meta=payload)
                 logger.info(f"Payment marked as PAID: tx_ref={tx_ref}")
                 return JsonResponse({'status': 'Received'}, status=200)
+            else:
+                logger.info(f'payment alread PAID: tx_ref={tx_ref}')
+                return JsonResponse({'status': 'Already processed'}, status=200)
+            
         else:
             if payment.status != 'FAILED':
                 payment.mark_failed(transaction_id=transaction_id, meta=payload)
                 logger.warning(f"Payment marked as FAILED: tx_ref={tx_ref}, reason={status}")
                 return JsonResponse({'status': 'Failed'}, status=403)
+            else:
+                logger.info(f'payment already FAILED: tx_ref={tx_ref}')
+                return JsonResponse({'status': 'Already processed'}, status=200)
 
     except Exception as e:
         logger.exception("Unhandled exception in webhook")
         return JsonResponse({'status': 'Internal server error'}, status=500)
 
 
+
 class PaymentHistoryView(LoginRequiredMixin, ListView):
     """
     processes requests for payment history page
     """
+    login_url= 'users:login'
     model = Payment  # binds view to Payment model
     template_name = "payments/payment_history.html"  # template to render
     context_object_name = "payments"  # context reference in template for returned queryset

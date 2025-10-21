@@ -11100,3 +11100,1580 @@ Not Found: /delivery/11/delivered/
 Not Found: /shipments/delete/
 Not Found: /shipments/19
 Not Found: /shipments/27/update/
+Not Found: /notifications/mark-read/10/shipments/1/
+Not Found: /notifications/mark-read/13/
+Not Found: /notifications/mark-read/10/shipments/1/
+Not Found: /notifications/mark-read/13/
+Not Found: /notifications/mark-read/10/shipments/1/
+Not Found: /notifications/mark-read/13/
+Not Found: /notifications/mark-read/1/shipments/1/
+Not Found: /notifications/mark-read/1/shipments/1/
+Not Found: /notifications/mark-read/1/shipments/1/
+Not Found: /notifications/mark-read/13/
+Not Found: /notifications/mark-read/13/
+Not Found: /notifications/mark-read/13/
+Not Found: /notifications/mark-read/13/
+Not Found: /notifications/mark-read/13/
+Not Found: /notifications/delete/19/
+Not Found: /notifications/mark-read/16/
+Not Found: /notifications/delete/22/
+Not Found: /notifications/mark-read/16/
+Not Found: /notifications/delete/22/
+Not Found: /notifications/mark-read/56/
+Not Found: /notifications/delete/62/
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Not Found: /shipments/delete/
+Not Found: /shipments/25
+Not Found: /shipments/33/update/
+Watching for file changes with StatReloader
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Not Found: /shipments/delete/
+Not Found: /shipments/25
+Not Found: /shipments/33/update/
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Not Found: /shipments/delete/
+Not Found: /shipments/28
+Not Found: /shipments/36/update/
+Internal Server Error: /delivery/4/accept
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\delivery\views.py", line 139, in accept_delivery_view
+    accepted_shipment.mark_in_transit()  # sets the status for the shipment to in transit.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\models.py", line 43, in mark_in_transit
+    self.save()
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\models.py", line 62, in save
+    self.calc_cost()  # sets cost for shipment
+    ^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\models.py", line 47, in calc_cost
+    self.cost = self.weight * 0.01
+                ~~~~~~~~~~~~^~~~~~
+TypeError: unsupported operand type(s) for *: 'decimal.Decimal' and 'float'
+Internal Server Error: /delivery/5/delivered/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\delivery\views.py", line 160, in delivered_delivery_view
+    delivered_shipment.mark_delivered()  # sets the status of the shipment to delivered
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\models.py", line 38, in mark_delivered
+    self.save(update_fields=['status', 'updated_at'])
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\models.py", line 62, in save
+    self.calc_cost()  # sets cost for shipment
+    ^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\models.py", line 47, in calc_cost
+    self.cost = self.weight * 0.01
+                ~~~~~~~~~~~~^~~~~~
+TypeError: unsupported operand type(s) for *: 'decimal.Decimal' and 'float'
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/102/
+Not Found: /notifications/delete/108/
+Internal Server Error: /shipments/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\views.py", line 31, in form_valid
+    return super().form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\views\generic\edit.py", line 133, in form_valid
+    self.object = form.save()
+                  ^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\forms\models.py", line 554, in save
+    self.instance.save()
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\models.py", line 62, in save
+    self.calc_cost()  # sets cost for shipment
+    ^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\models.py", line 47, in calc_cost
+    self.cost = self.weight * 0.01
+                ~~~~~~~~~~~~^~~~~~
+TypeError: unsupported operand type(s) for *: 'decimal.Decimal' and 'float'
+Not Found: /shipments/delete/
+Not Found: /shipments/52
+Not Found: /shipments/60/update/
+Internal Server Error: /shipments/61/update/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\views\generic\edit.py", line 206, in post
+    return super().post(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\views.py", line 115, in form_valid
+    form.instance.calc_cost()
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\shipments\models.py", line 47, in calc_cost
+    self.cost = self.weight * 0.01
+                ~~~~~~~~~~~~^~~~~~
+TypeError: unsupported operand type(s) for *: 'decimal.Decimal' and 'float'
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Not Found: /shipments/delete/
+Not Found: /shipments/53
+Not Found: /shipments/61/update/
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Not Found: /shipments/delete/
+Not Found: /shipments/53
+Not Found: /shipments/61/update/
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Not Found: /shipments/delete/
+Not Found: /shipments/53
+Not Found: /shipments/61/update/
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Not Found: /shipments/delete/
+Not Found: /shipments/53
+Not Found: /shipments/61/update/
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 52553
+"GET /static/css/theme.css HTTP/1.1" 304 0
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /users/logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 52877
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /users/login/ HTTP/1.1" 200 10433
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"POST /users/login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 55952
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /admin/ HTTP/1.1" 200 13468
+"GET /static/admin/css/base.css HTTP/1.1" 304 0
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+"GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+"GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+"GET /static/admin/js/theme.js HTTP/1.1" 304 0
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3487
+"GET /admin/users/profile/ HTTP/1.1" 200 14206
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+"GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+"GET /static/admin/js/core.js HTTP/1.1" 304 0
+"GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+"GET /static/admin/js/actions.js HTTP/1.1" 304 0
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+"GET /static/admin/js/filters.js HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+"GET /admin/users/profile/1/change/ HTTP/1.1" 200 17084
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+"GET /static/admin/css/forms.css HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+"GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+"GET /admin/users/profile/ HTTP/1.1" 200 14206
+Watching for file changes with StatReloader
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Internal Server Error: /payments/receipt/2
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 31, in receipt_view
+    shipment = Shipment.objects.get(id=shipment_id, user=request.user)  # gets shipment instance
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\db\models\query.py", line 633, in get
+    raise self.model.DoesNotExist(
+shipments.models.Shipment.DoesNotExist: Shipment matching query does not exist.
+Not Found: /payments/receipt/2
+Not Found: /payments/receipt/download/1
+Not Found: /payments/receipt/3
+Not Found: /payments/receipt/download/1
+Not Found: /payments/receipt/4
+Not Found: /payments/receipt/download/1
+Not Found: /payments/receipt/4
+Not Found: /payments/receipt/download/1
+Not Found: /payments/receipt/4
+Not Found: /payments/receipt/download/1
+Not Found: /payments/receipt/4
+Not Found: /payments/receipt/download/1
+Not Found: /payments/receipt/4
+Not Found: /payments/receipt/download/21
+Not Found: /payments/receipt/42
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Not Found: /payments/receipt/download/21
+Not Found: /payments/receipt/59
+Not Found: /shipments/delete/
+Not Found: /shipments/67
+Not Found: /shipments/75/update/
+Not Found: /payments/receipt/download/22
+Not Found: /payments/receipt/43
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 55636
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /users/logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 52877
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /users/login/ HTTP/1.1" 200 10433
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /users/login/ HTTP/1.1" 200 10433
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"POST /users/login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 54573
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/list/ HTTP/1.1" 200 15034
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /payments/history/ HTTP/1.1" 200 11650
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 54251
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/list/ HTTP/1.1" 200 15034
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/4 HTTP/1.1" 200 13355
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+Internal Server Error: /payments/initiate/4
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001CA1E993510>: Failed to resolve 'api.flutterwave.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001CA1E993510>: Failed to resolve 'api.flutterwave.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 78, in initiate_payment_view
+    response = requests.post(url, json=payload, headers=headers)  # posts payload and headers to flutterwave api
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001CA1E993510>: Failed to resolve 'api.flutterwave.com' ([Errno 11001] getaddrinfo failed)"))
+"GET /payments/initiate/4 HTTP/1.1" 500 195991
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3487
+"GET /shipments/list/ HTTP/1.1" 200 15034
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"POST /shipments/delete/ HTTP/1.1" 302 0
+"GET /shipments/list/ HTTP/1.1" 200 14162
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 54706
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Internal Server Error: /payments/initiate/2
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000028675981210>: Failed to resolve 'api.flutterwave.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000028675981210>: Failed to resolve 'api.flutterwave.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 78, in initiate_payment_view
+    response = requests.post(url, json=payload, headers=headers)  # posts payload and headers to flutterwave api
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000028675981210>: Failed to resolve 'api.flutterwave.com' ([Errno 11001] getaddrinfo failed)"))
+Not Found: /payments/initiate/1
+Internal Server Error: /payments/initiate/2
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x00000192819056D0>: Failed to resolve 'api.flutterwave.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000192819056D0>: Failed to resolve 'api.flutterwave.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 78, in initiate_payment_view
+    response = requests.post(url, json=payload, headers=headers)  # posts payload and headers to flutterwave api
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000192819056D0>: Failed to resolve 'api.flutterwave.com' ([Errno 11001] getaddrinfo failed)"))
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Internal Server Error: /payments/initiate/3
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\ssl_.py", line 480, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\ssl_.py", line 524, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 1075, in _create
+    self.do_handshake()
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 1346, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLEOFError: EOF occurred in violation of protocol (_ssl.c:992)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: EOF occurred in violation of protocol (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:992)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 78, in initiate_payment_view
+    response = requests.post(url, json=payload, headers=headers)  # posts payload and headers to flutterwave api
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 675, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:992)')))
+Not Found: /payments/initiate/1
+Internal Server Error: /payments/initiate/3
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\ssl_.py", line 480, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\ssl_.py", line 524, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 1075, in _create
+    self.do_handshake()
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\ssl.py", line 1346, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLEOFError: EOF occurred in violation of protocol (_ssl.c:992)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: EOF occurred in violation of protocol (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:992)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 78, in initiate_payment_view
+    response = requests.post(url, json=payload, headers=headers)  # posts payload and headers to flutterwave api
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\requests\adapters.py", line 675, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='api.flutterwave.com', port=443): Max retries exceeded with url: /v3/payments (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:992)')))
+Not Found: /payments/initiate/1
+Not Found: /payments/initiate/1
+Internal Server Error: /payments/initiate/1
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 80, in initiate_payment_view
+    data = response.json()  # retrieve metadata in json format from flutterwave api endpoint
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1177, in _execute_mock_call
+    raise effect
+ValueError: Invalid JSON
+Not Found: /payments/initiate/2
+Internal Server Error: /payments/initiate/1
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 80, in initiate_payment_view
+    data = response.json()  # retrieve metadata in json format from flutterwave api endpoint
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1177, in _execute_mock_call
+    raise effect
+ValueError: Invalid JSON
+Not Found: /payments/initiate/2
+Internal Server Error: /payments/initiate/1
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 80, in initiate_payment_view
+    data = response.json()  # retrieve metadata in json format from flutterwave api endpoint
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = next(effect)
+             ^^^^^^^^^^^^
+StopIteration
+Not Found: /payments/initiate/2
+Internal Server Error: /payments/initiate/1
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 80, in initiate_payment_view
+    data = response.json()  # retrieve metadata in json format from flutterwave api endpoint
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1177, in _execute_mock_call
+    raise effect
+ValueError: Invalid JSON
+Internal Server Error: /payments/initiate/2
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 78, in initiate_payment_view
+    response = requests.post(url, json=payload, headers=headers)  # posts payload and headers to flutterwave api
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1177, in _execute_mock_call
+    raise effect
+Exception: Network error
+Not Found: /payments/initiate/3
+Internal Server Error: /payments/initiate/2
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 80, in initiate_payment_view
+    response = requests.post(url, json=payload, headers=headers)  # posts payload and headers to flutterwave api
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1177, in _execute_mock_call
+    raise effect
+Exception: Network error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'shipment'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 99, in initiate_payment_view
+    return redirect('shipment:detail', pk=payment.shipment.pk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'shipment' is not a registered namespace
+Not Found: /payments/initiate/3
+Not Found: /payments/initiate/3
+Not Found: /payments/initiate/3
+Not Found: /payments/initiate/3
+Not Found: /payments/initiate/3
+Not Found: /payments/initiate/3
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Not Found: /payments/initiate/20
+Not Found: /payments/receipt/download/41
+Not Found: /payments/receipt/93
+Not Found: /shipments/delete/
+Not Found: /shipments/101
+Not Found: /shipments/109/update/
+Not Found: /payments/verify/
+Not Found: /payments/verify/
+Not Found: /payments/verify/
+Not Found: /payments/verify/
+Not Found: /payments/verify/
+Not Found: /payments/verify/
+Not Found: /payments/verify/
+Not Found: /payments/verify/
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 122, in verify_payment_view
+    response = requests.get(url, headers=headers)  # post header to verification api url
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1177, in _execute_mock_call
+    raise effect
+Exception: Network Error
+Not Found: /payments/verify/
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 127, in verify_payment_view
+    response = requests.get(url, headers=headers)  # post header to verification api url
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1177, in _execute_mock_call
+    raise effect
+Exception: Network Error
+Not Found: /payments/verify/
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 127, in verify_payment_view
+    response = requests.get(url, headers=headers)  # post header to verification api url
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\unittest\mock.py", line 1177, in _execute_mock_call
+    raise effect
+Exception: Network Error
+Not Found: /payments/verify/
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 108, in verify_payment_view
+    response = requests.get(url, headers=headers)
+                            ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 112, in verify_payment_view
+    payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'payment' where it is not associated with a value
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 108, in verify_payment_view
+    response = requests.get(url, headers=headers)
+                            ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 112, in verify_payment_view
+    payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'payment' where it is not associated with a value
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 108, in verify_payment_view
+    response = requests.get(url, headers=headers)
+                            ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 112, in verify_payment_view
+    payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'payment' where it is not associated with a value
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 108, in verify_payment_view
+    response = requests.get(url, headers=headers)
+                            ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 112, in verify_payment_view
+    payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'payment' where it is not associated with a value
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 108, in verify_payment_view
+    response = requests.get(url, headers=headers)
+                            ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 112, in verify_payment_view
+    payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'payment' where it is not associated with a value
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 108, in verify_payment_view
+    response = requests.get(url, headers=headers)
+                            ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 112, in verify_payment_view
+    payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'payment' where it is not associated with a value
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 108, in verify_payment_view
+    response = requests.get(url, headers=headers)
+                            ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 112, in verify_payment_view
+    payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'payment' where it is not associated with a value
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 108, in verify_payment_view
+    response = requests.get(url, headers=headers)
+                            ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 112, in verify_payment_view
+    payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'payment' where it is not associated with a value
+Internal Server Error: /payments/verify/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 108, in verify_payment_view
+    response = requests.get(url, headers=headers)
+                            ^^^
+UnboundLocalError: cannot access local variable 'url' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 112, in verify_payment_view
+    payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'payment' where it is not associated with a value
+Not Found: /payments/verify/
+Internal Server Error: /payments/webhook/
+Internal Server Error: /payments/webhook/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view payments.views.flutterwave_webhook_view didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /payments/webhook/
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\venv\Lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view payments.views.flutterwave_webhook_view didn't return an HttpResponse object. It returned None instead.
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Not Found: /payments/webhook/
+Internal Server Error: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Not Found: /payments/webhook/
+Internal Server Error: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Not Found: /payments/webhook/
+Not Found: /payments/initiate/14
+Not Found: /payments/receipt/download/50
+Not Found: /payments/receipt/91
+Not Found: /payments/verify/
+Internal Server Error: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Not Found: /payments/webhook/
+Not Found: /payments/initiate/14
+Not Found: /payments/receipt/download/49
+Not Found: /payments/receipt/91
+Not Found: /payments/verify/
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Internal Server Error: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Not Found: /payments/webhook/
+Not Found: /payments/initiate/31
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Internal Server Error: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Not Found: /payments/webhook/
+Not Found: /payments/initiate/31
+Not Found: /payments/receipt/download/49
+Not Found: /payments/receipt/108
+Not Found: /payments/verify/
+Not Found: /shipments/delete/
+Not Found: /shipments/125
+Not Found: /shipments/133/update/
+Not Found: /delivery/6/accept
+Not Found: /shipments/8
+Not Found: /delivery/11/delivered/
+Not Found: /notifications/mark-read/106/
+Not Found: /notifications/delete/112/
+Internal Server Error: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Forbidden: /payments/webhook/
+Not Found: /payments/webhook/
+Not Found: /payments/initiate/31
+Not Found: /payments/receipt/download/49
+Not Found: /payments/receipt/108
+Not Found: /payments/verify/
+Not Found: /shipments/delete/
+Not Found: /shipments/125
+Not Found: /shipments/133/update/
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 54715
+"GET /static/css/theme.css HTTP/1.1" 304 0
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /notifications/ HTTP/1.1" 200 14590
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /notifications/delete_all HTTP/1.1" 302 0
+"GET /notifications/ HTTP/1.1" 200 10321
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 52903
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 52903
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 52903
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/list/ HTTP/1.1" 200 12063
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 52903
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 50586
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /? HTTP/1.1" 200 50586
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/track/ HTTP/1.1" 200 10049
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 50586
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/ HTTP/1.1" 200 11016
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 50586
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/ HTTP/1.1" 200 11016
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 50586
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/list/ HTTP/1.1" 200 12063
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/track/ HTTP/1.1" 200 10049
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 50586
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/ HTTP/1.1" 200 11016
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"POST /shipments/ HTTP/1.1" 302 0
+"GET /shipments/list/ HTTP/1.1" 200 14876
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/5 HTTP/1.1" 200 12905
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/list/ HTTP/1.1" 200 14581
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/5/update/ HTTP/1.1" 200 11939
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/5 HTTP/1.1" 200 12905
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/list/ HTTP/1.1" 200 14581
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 51483
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /notifications/mark-read/27/ HTTP/1.1" 302 0
+"GET /shipments/5 HTTP/1.1" 200 12725
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/list/ HTTP/1.1" 200 14401
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 51304
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 51304
+"GET /static/img/icons/services-2.svg HTTP/1.1" 200 2253
+"GET /static/img/icons/services-3.svg HTTP/1.1" 200 1069
+"GET /static/img/illustrations/hero.png HTTP/1.1" 200 43254
+"GET /static/img/icons/services-1.svg HTTP/1.1" 200 897
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/img/icons/awards.png HTTP/1.1" 200 1271
+"GET /static/vendors/%40popperjs/popper.min.js HTTP/1.1" 200 18594
+"GET /static/vendors/bootstrap/bootstrap.min.js HTTP/1.1" 200 60091
+"GET /static/img/icons/states.png HTTP/1.1" 200 887
+"GET /static/js/theme.js HTTP/1.1" 200 13428
+"GET /static/img/icons/goods.png HTTP/1.1" 200 1677
+"GET /static/img/icons/clients.png HTTP/1.1" 200 1600
+"GET /static/img/icons/business.png HTTP/1.1" 200 831
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3487
+"GET /static/img/gallery/hero-header-bg.png HTTP/1.1" 200 28754
+"GET /static/img/gallery/bg.png HTTP/1.1" 200 1024208
+"GET /static/img/gallery/video.png HTTP/1.1" 200 896867
+"GET /static/vendors/fontawesome/all.min.js HTTP/1.1" 200 1195450
+"GET /static/img/icons/play.png HTTP/1.1" 200 2018
+"GET /static/img/icons/avatar.png HTTP/1.1" 200 4179
+"GET /static/img/gallery/footer-logo.png HTTP/1.1" 200 1833
+"GET /static/img/illustrations/callback.png HTTP/1.1" 200 19198
+"GET /static/img/gallery/quote.png HTTP/1.1" 200 1330
+"GET /static/img/gallery/map.svg HTTP/1.1" 200 2645598
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/img/favicons/favicon-32x32.png HTTP/1.1" 200 1033
+"GET /shipments/list/ HTTP/1.1" 200 14401
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/img/gallery/footer-logo.png HTTP/1.1" 200 1833
+"GET /static/vendors/%40popperjs/popper.min.js HTTP/1.1" 200 18594
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/vendors/bootstrap/bootstrap.min.js HTTP/1.1" 200 60091
+"GET /static/js/theme.js HTTP/1.1" 200 13428
+"GET /static/vendors/fontawesome/all.min.js HTTP/1.1" 200 1195450
+"GET /static/img/gallery/bg.png HTTP/1.1" 200 1024208
+"GET /shipments/list/ HTTP/1.1" 200 14401
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/ HTTP/1.1" 200 14401
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/ HTTP/1.1" 200 14402
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/ HTTP/1.1" 200 14402
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/ HTTP/1.1" 200 14402
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/ HTTP/1.1" 200 14402
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/ HTTP/1.1" 200 14402
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/?q=benin HTTP/1.1" 200 14417
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/5 HTTP/1.1" 200 12726
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/5 HTTP/1.1" 200 10440
+"GET /static/vendors/%40popperjs/popper.min.js HTTP/1.1" 200 18594
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/vendors/bootstrap/bootstrap.min.js HTTP/1.1" 200 60091
+"GET /static/js/theme.js HTTP/1.1" 200 13428
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/fontawesome/all.min.js HTTP/1.1" 200 1195450
+"GET /static/img/gallery/bg.png HTTP/1.1" 200 1024208
+"GET /shipments/5 HTTP/1.1" 200 10440
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/img/favicons/favicon-32x32.png HTTP/1.1" 200 1033
+"GET /shipments/5 HTTP/1.1" 200 10440
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /shipments/5 HTTP/1.1" 200 10440
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/track/ HTTP/1.1" 200 8482
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/ HTTP/1.1" 200 12116
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/5 HTTP/1.1" 200 10440
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/track/ HTTP/1.1" 200 8482
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"POST /shipments/track/ HTTP/1.1" 200 8574
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"POST /shipments/track/ HTTP/1.1" 200 8574
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/ HTTP/1.1" 200 12116
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/5 HTTP/1.1" 200 10440
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/track/ HTTP/1.1" 200 8482
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"POST /shipments/track/ HTTP/1.1" 200 9380
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET / HTTP/1.1" 200 49019
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/img/icons/services-1.svg HTTP/1.1" 200 897
+"GET /static/img/illustrations/hero.png HTTP/1.1" 200 43254
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/img/icons/states.png HTTP/1.1" 200 887
+"GET /static/img/icons/clients.png HTTP/1.1" 200 1600
+"GET /static/img/icons/services-2.svg HTTP/1.1" 200 2253
+"GET /static/img/icons/services-3.svg HTTP/1.1" 200 1069
+"GET /static/img/icons/business.png HTTP/1.1" 200 831
+"GET /static/img/icons/goods.png HTTP/1.1" 200 1677
+"GET /static/img/icons/play.png HTTP/1.1" 200 2018
+"GET /static/img/gallery/video.png HTTP/1.1" 200 896867
+"GET /static/img/icons/awards.png HTTP/1.1" 200 1271
+"GET /static/img/icons/avatar.png HTTP/1.1" 200 4179
+"GET /static/img/gallery/quote.png HTTP/1.1" 200 1330
+"GET /static/img/illustrations/callback.png HTTP/1.1" 200 19198
+"GET /static/img/gallery/hero-header-bg.png HTTP/1.1" 200 28754
+"GET /static/img/gallery/map.svg HTTP/1.1" 200 2645598
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET / HTTP/1.1" 200 51305
+"GET /static/img/icons/services-1.svg HTTP/1.1" 200 897
+"GET /static/img/icons/services-3.svg HTTP/1.1" 200 1069
+"GET /static/img/icons/awards.png HTTP/1.1" 200 1271
+"GET /static/img/icons/services-2.svg HTTP/1.1" 200 2253
+"GET /static/img/illustrations/hero.png HTTP/1.1" 200 43254
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/vendors/%40popperjs/popper.min.js HTTP/1.1" 200 18594
+"GET /static/js/theme.js HTTP/1.1" 200 13428
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/img/icons/states.png HTTP/1.1" 200 887
+"GET /static/img/icons/clients.png HTTP/1.1" 200 1600
+"GET /static/vendors/bootstrap/bootstrap.min.js HTTP/1.1" 200 60091
+"GET /static/vendors/fontawesome/all.min.js HTTP/1.1" 200 1195450
+"GET /static/img/icons/goods.png HTTP/1.1" 200 1677
+"GET /static/img/icons/business.png HTTP/1.1" 200 831
+"GET /static/img/gallery/video.png HTTP/1.1" 200 896867
+"GET /static/img/icons/play.png HTTP/1.1" 200 2018
+"GET /static/img/gallery/hero-header-bg.png HTTP/1.1" 200 28754
+"GET /static/img/icons/avatar.png HTTP/1.1" 200 4179
+"GET /static/img/gallery/bg.png HTTP/1.1" 200 1024208
+"GET /static/img/illustrations/callback.png HTTP/1.1" 200 19198
+"GET /static/img/gallery/footer-logo.png HTTP/1.1" 200 1833
+"GET /static/img/gallery/quote.png HTTP/1.1" 200 1330
+"GET /static/img/gallery/map.svg HTTP/1.1" 200 2645598
+"GET / HTTP/1.1" 200 51305
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/img/favicons/favicon-32x32.png HTTP/1.1" 200 1033
+"GET /shipments/track/ HTTP/1.1" 200 10768
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"POST /shipments/track/ HTTP/1.1" 200 11667
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/list/ HTTP/1.1" 200 14403
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/5 HTTP/1.1" 200 12727
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /static/css/theme.css HTTP/1.1" 200 377486
+"GET /shipments/5 HTTP/1.1" 200 12727
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+"GET / HTTP/1.1" 200 51306
+"GET /static/vendors/is/is.min.js% HTTP/1.1" 404 1879
+C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py changed, reloading.
+Watching for file changes with StatReloader
