@@ -46,7 +46,7 @@ class DeliveryAssignmentTests(TestCase):
         self.client.login(username='courier', password='testpass222') # authenticates user 
         url = reverse("admin:delivery_deliveryassignment_add") # assign delivery page in admin panel
         response = self.client.post(url, {'shipment': self.shipment.pk, 'courier':self.courier.pk, 'status': 'ASSIGNED'}) # retrieves response on postin data to assign delivery page
-        self.assertRedirects(response, "/admin/login/?next=/admin/delivery/deliveryassignment/add/") # asserts if non-admin is redirected to login as admin
+        self.assertRedirects(response, "/secure-admin-panel/login/?next=/secure-admin-panel/delivery/deliveryassignment/add/") # asserts if non-admin is redirected to login as admin
         self.assertFalse(DeliveryAssignment.objects.filter(shipment=self.shipment).exists()) # asserts if the delivery assignment wasn't created
 
     def test_prevent_duplicate_assignment(self):

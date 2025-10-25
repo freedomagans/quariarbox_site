@@ -98,7 +98,7 @@
                 <a class="btn btn-primary order-1 order-lg-0 ms-lg-3" href="{% url 'delivery:list' %}">Assigned
                     deliveries</a>
                 {% elif request.user.profile.role == "admin" %}
-                <a class="btn btn-primary order-1 order-lg-0 ms-lg-3" href="/admin">Admin panel</a>
+                <a class="btn btn-primary order-1 order-lg-0 ms-lg-3" href="secure-admin-panel/">Admin panel</a>
                 {% endif %}
 
                 <a class="btn  ms-2" href="{% url 'users:profile' %}"><i class="fas fa-2x fa-user-circle "></i>

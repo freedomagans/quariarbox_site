@@ -23,8 +23,8 @@ from .views import home,custom_admin_logout
 
 urlpatterns = [
     path('',home, name="home"),
+    path('secure-admin-panel/', admin.site.urls, name='admin'),
     path("admin/logout/", custom_admin_logout, name="admin-logout"),
-    path('admin/', admin.site.urls),
     path('users/', include("users.urls")),
     path('shipments/', include("shipments.urls")),
     path("delivery/", include("delivery.urls")),

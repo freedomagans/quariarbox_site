@@ -1,0 +1,217 @@
+ERROR 2025-10-23 08:38:54,458 views 9120 11436 Unhandled exception in webhook
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 168, in flutterwave_webhook_view
+    payload = json.loads(request.body)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 13 (char 12)
+INFO 2025-10-23 08:38:55,320 views 9120 11436 Webhook received: tx_ref=QBX-F8DF95B372, transaction_id=TEST TXN ID, status=failed
+INFO 2025-10-23 08:38:55,321 views 9120 11436 payment already FAILED: tx_ref=QBX-F8DF95B372
+INFO 2025-10-23 08:38:58,889 views 9120 11436 Webhook received: tx_ref=QBX-8A68C411AD, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 08:38:58,889 views 9120 11436 payment alread PAID: tx_ref=QBX-8A68C411AD
+INFO 2025-10-23 08:38:59,694 views 9120 11436 Webhook received: tx_ref=QBX-DCAED4079F, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 08:39:02,139 views 9120 11436 Payment marked as PAID: tx_ref=QBX-DCAED4079F
+INFO 2025-10-23 08:39:07,032 views 9120 11436 Webhook received: tx_ref=QBX-A225009E2E, transaction_id=FAILED TXN ID, status=failed
+WARNING 2025-10-23 08:39:07,032 views 9120 11436 Payment marked as FAILED: tx_ref=QBX-A225009E2E, reason=failed
+INFO 2025-10-23 08:39:08,257 views 9120 11436 Webhook received: tx_ref=QBX-2BE232D375, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 08:39:10,691 views 9120 11436 Payment marked as PAID: tx_ref=QBX-2BE232D375
+WARNING 2025-10-23 08:39:11,911 views 9120 11436 Invalid webhook signature
+WARNING 2025-10-23 08:39:13,145 views 9120 11436 Invalid webhook signature
+INFO 2025-10-23 08:39:14,400 views 9120 11436 Webhook received: tx_ref=QBX-F16E0F2DA3, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 08:39:16,751 views 9120 11436 Payment marked as PAID: tx_ref=QBX-F16E0F2DA3
+INFO 2025-10-23 08:39:18,020 views 9120 11436 Webhook received: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN, status=successful
+ERROR 2025-10-23 08:39:18,020 views 9120 11436 Payment not found: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN
+ERROR 2025-10-23 08:43:04,907 views 9120 11436 Error verifying payment: Network Error
+ERROR 2025-10-23 22:50:18,356 views 660 10608 Unhandled exception in webhook
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 181, in flutterwave_webhook_view
+    payload = json.loads(request.body)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 13 (char 12)
+INFO 2025-10-23 22:50:19,249 views 660 10608 Webhook received: tx_ref=QBX-2D9ED633FA, transaction_id=TEST TXN ID, status=failed
+INFO 2025-10-23 22:50:19,249 views 660 10608 payment already FAILED: tx_ref=QBX-2D9ED633FA
+INFO 2025-10-23 22:50:22,986 views 660 10608 Webhook received: tx_ref=QBX-052C7F90C1, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 22:50:22,987 views 660 10608 payment alread PAID: tx_ref=QBX-052C7F90C1
+INFO 2025-10-23 22:50:24,063 views 660 10608 Webhook received: tx_ref=QBX-A1017264C6, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 22:50:26,426 views 660 10608 Payment marked as PAID: tx_ref=QBX-A1017264C6
+INFO 2025-10-23 22:50:31,295 views 660 10608 Webhook received: tx_ref=QBX-DEB564AA0C, transaction_id=FAILED TXN ID, status=failed
+WARNING 2025-10-23 22:50:31,311 views 660 10608 Payment marked as FAILED: tx_ref=QBX-DEB564AA0C, reason=failed
+INFO 2025-10-23 22:50:32,368 views 660 10608 Webhook received: tx_ref=QBX-1A01F2AFE1, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 22:50:34,733 views 660 10608 Payment marked as PAID: tx_ref=QBX-1A01F2AFE1
+WARNING 2025-10-23 22:50:35,775 views 660 10608 Invalid webhook signature
+WARNING 2025-10-23 22:50:36,827 views 660 10608 Invalid webhook signature
+INFO 2025-10-23 22:50:37,962 views 660 10608 Webhook received: tx_ref=QBX-47E07BF1FE, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 22:50:40,302 views 660 10608 Payment marked as PAID: tx_ref=QBX-47E07BF1FE
+INFO 2025-10-23 22:50:41,180 views 660 10608 Webhook received: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN, status=successful
+ERROR 2025-10-23 22:50:41,182 views 660 10608 Payment not found: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN
+ERROR 2025-10-23 22:54:28,021 views 660 10608 Error verifying payment please try again later
+ERROR 2025-10-23 23:05:05,170 views 14404 7712 Unhandled exception in webhook
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 181, in flutterwave_webhook_view
+    payload = json.loads(request.body)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 13 (char 12)
+INFO 2025-10-23 23:05:06,252 views 14404 7712 Webhook received: tx_ref=QBX-563DB0CD35, transaction_id=TEST TXN ID, status=failed
+INFO 2025-10-23 23:05:06,254 views 14404 7712 payment already FAILED: tx_ref=QBX-563DB0CD35
+INFO 2025-10-23 23:05:09,930 views 14404 7712 Webhook received: tx_ref=QBX-902816AB6F, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 23:05:09,931 views 14404 7712 payment alread PAID: tx_ref=QBX-902816AB6F
+INFO 2025-10-23 23:05:10,996 views 14404 7712 Webhook received: tx_ref=QBX-48CA641009, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 23:05:13,374 views 14404 7712 Payment marked as PAID: tx_ref=QBX-48CA641009
+INFO 2025-10-23 23:05:18,351 views 14404 7712 Webhook received: tx_ref=QBX-6481325CE4, transaction_id=FAILED TXN ID, status=failed
+WARNING 2025-10-23 23:05:18,351 views 14404 7712 Payment marked as FAILED: tx_ref=QBX-6481325CE4, reason=failed
+INFO 2025-10-23 23:05:19,434 views 14404 7712 Webhook received: tx_ref=QBX-DC05A7D0EF, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 23:05:21,745 views 14404 7712 Payment marked as PAID: tx_ref=QBX-DC05A7D0EF
+WARNING 2025-10-23 23:05:22,933 views 14404 7712 Invalid webhook signature
+WARNING 2025-10-23 23:05:23,983 views 14404 7712 Invalid webhook signature
+INFO 2025-10-23 23:05:25,037 views 14404 7712 Webhook received: tx_ref=QBX-2818D57CD5, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 23:05:27,496 views 14404 7712 Payment marked as PAID: tx_ref=QBX-2818D57CD5
+INFO 2025-10-23 23:05:28,869 views 14404 7712 Webhook received: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN, status=successful
+ERROR 2025-10-23 23:05:28,869 views 14404 7712 Payment not found: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN
+ERROR 2025-10-23 23:09:20,249 views 14404 7712 Error verifying payment please try again later
+ERROR 2025-10-23 23:22:14,663 views 2140 10452 Unhandled exception in webhook
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 181, in flutterwave_webhook_view
+    payload = json.loads(request.body)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 13 (char 12)
+INFO 2025-10-23 23:22:15,586 views 2140 10452 Webhook received: tx_ref=QBX-0E4A67A5A1, transaction_id=TEST TXN ID, status=failed
+INFO 2025-10-23 23:22:15,588 views 2140 10452 payment already FAILED: tx_ref=QBX-0E4A67A5A1
+INFO 2025-10-23 23:22:18,903 views 2140 10452 Webhook received: tx_ref=QBX-B8C0ACF98A, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 23:22:18,903 views 2140 10452 payment alread PAID: tx_ref=QBX-B8C0ACF98A
+INFO 2025-10-23 23:22:19,739 views 2140 10452 Webhook received: tx_ref=QBX-49FD4B8D98, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 23:22:22,040 views 2140 10452 Payment marked as PAID: tx_ref=QBX-49FD4B8D98
+INFO 2025-10-23 23:22:26,275 views 2140 10452 Webhook received: tx_ref=QBX-2849364B26, transaction_id=FAILED TXN ID, status=failed
+WARNING 2025-10-23 23:22:26,275 views 2140 10452 Payment marked as FAILED: tx_ref=QBX-2849364B26, reason=failed
+INFO 2025-10-23 23:22:27,173 views 2140 10452 Webhook received: tx_ref=QBX-2D9BF5519B, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 23:22:29,468 views 2140 10452 Payment marked as PAID: tx_ref=QBX-2D9BF5519B
+WARNING 2025-10-23 23:22:30,436 views 2140 10452 Invalid webhook signature
+WARNING 2025-10-23 23:22:31,251 views 2140 10452 Invalid webhook signature
+INFO 2025-10-23 23:22:32,077 views 2140 10452 Webhook received: tx_ref=QBX-F746F743A5, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-23 23:22:34,476 views 2140 10452 Payment marked as PAID: tx_ref=QBX-F746F743A5
+INFO 2025-10-23 23:22:35,819 views 2140 10452 Webhook received: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN, status=successful
+ERROR 2025-10-23 23:22:35,819 views 2140 10452 Payment not found: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN
+ERROR 2025-10-23 23:26:12,031 views 2140 10452 Error verifying payment please try again later
+ERROR 2025-10-24 00:02:09,549 views 12004 4956 Unhandled exception in webhook
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 181, in flutterwave_webhook_view
+    payload = json.loads(request.body)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 13 (char 12)
+INFO 2025-10-24 00:02:10,365 views 12004 4956 Webhook received: tx_ref=QBX-480D5FB267, transaction_id=TEST TXN ID, status=failed
+INFO 2025-10-24 00:02:10,365 views 12004 4956 payment already FAILED: tx_ref=QBX-480D5FB267
+INFO 2025-10-24 00:02:13,596 views 12004 4956 Webhook received: tx_ref=QBX-8BD8FA4287, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 00:02:13,596 views 12004 4956 payment alread PAID: tx_ref=QBX-8BD8FA4287
+INFO 2025-10-24 00:02:14,395 views 12004 4956 Webhook received: tx_ref=QBX-975D942712, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 00:02:16,638 views 12004 4956 Payment marked as PAID: tx_ref=QBX-975D942712
+INFO 2025-10-24 00:02:20,555 views 12004 4956 Webhook received: tx_ref=QBX-F59FAEE995, transaction_id=FAILED TXN ID, status=failed
+WARNING 2025-10-24 00:02:20,555 views 12004 4956 Payment marked as FAILED: tx_ref=QBX-F59FAEE995, reason=failed
+INFO 2025-10-24 00:02:21,359 views 12004 4956 Webhook received: tx_ref=QBX-EB919D8D1A, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 00:02:23,816 views 12004 4956 Payment marked as PAID: tx_ref=QBX-EB919D8D1A
+WARNING 2025-10-24 00:02:24,977 views 12004 4956 Invalid webhook signature
+WARNING 2025-10-24 00:02:25,776 views 12004 4956 Invalid webhook signature
+INFO 2025-10-24 00:02:26,734 views 12004 4956 Webhook received: tx_ref=QBX-B9C27E3A16, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 00:02:29,053 views 12004 4956 Payment marked as PAID: tx_ref=QBX-B9C27E3A16
+INFO 2025-10-24 00:02:30,325 views 12004 4956 Webhook received: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN, status=successful
+ERROR 2025-10-24 00:02:30,325 views 12004 4956 Payment not found: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN
+ERROR 2025-10-24 00:06:03,014 views 12004 4956 Error verifying payment please try again later
+ERROR 2025-10-24 11:02:05,557 views 8648 10904 Unhandled exception in webhook
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 181, in flutterwave_webhook_view
+    payload = json.loads(request.body)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 13 (char 12)
+INFO 2025-10-24 11:02:06,490 views 8648 10904 Webhook received: tx_ref=QBX-F0F14D81EB, transaction_id=TEST TXN ID, status=failed
+INFO 2025-10-24 11:02:06,490 views 8648 10904 payment already FAILED: tx_ref=QBX-F0F14D81EB
+INFO 2025-10-24 11:02:10,539 views 8648 10904 Webhook received: tx_ref=QBX-CA61E35C30, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 11:02:10,542 views 8648 10904 payment alread PAID: tx_ref=QBX-CA61E35C30
+INFO 2025-10-24 11:02:11,639 views 8648 10904 Webhook received: tx_ref=QBX-DC6F7B979E, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 11:02:13,937 views 8648 10904 Payment marked as PAID: tx_ref=QBX-DC6F7B979E
+INFO 2025-10-24 11:02:18,350 views 8648 10904 Webhook received: tx_ref=QBX-C4E5AFB264, transaction_id=FAILED TXN ID, status=failed
+WARNING 2025-10-24 11:02:18,365 views 8648 10904 Payment marked as FAILED: tx_ref=QBX-C4E5AFB264, reason=failed
+INFO 2025-10-24 11:02:19,169 views 8648 10904 Webhook received: tx_ref=QBX-9C2F8BBC30, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 11:02:21,541 views 8648 10904 Payment marked as PAID: tx_ref=QBX-9C2F8BBC30
+WARNING 2025-10-24 11:02:22,482 views 8648 10904 Invalid webhook signature
+WARNING 2025-10-24 11:02:23,448 views 8648 10904 Invalid webhook signature
+INFO 2025-10-24 11:02:24,432 views 8648 10904 Webhook received: tx_ref=QBX-62FD21F39B, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 11:02:26,763 views 8648 10904 Payment marked as PAID: tx_ref=QBX-62FD21F39B
+INFO 2025-10-24 11:02:27,701 views 8648 10904 Webhook received: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN, status=successful
+ERROR 2025-10-24 11:02:27,701 views 8648 10904 Payment not found: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN
+ERROR 2025-10-24 11:06:03,334 views 8648 10904 Error verifying payment please try again later
+ERROR 2025-10-24 20:48:46,847 views 7808 14076 Unhandled exception in webhook
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\PROGRAMS\python development\Django development\courier_site_project\payments\views.py", line 181, in flutterwave_webhook_view
+    payload = json.loads(request.body)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hp\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 13 (char 12)
+INFO 2025-10-24 20:48:47,759 views 7808 14076 Webhook received: tx_ref=QBX-E76DCD5DD2, transaction_id=TEST TXN ID, status=failed
+INFO 2025-10-24 20:48:47,759 views 7808 14076 payment already FAILED: tx_ref=QBX-E76DCD5DD2
+INFO 2025-10-24 20:48:51,422 views 7808 14076 Webhook received: tx_ref=QBX-3AEF923CF0, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 20:48:51,422 views 7808 14076 payment alread PAID: tx_ref=QBX-3AEF923CF0
+INFO 2025-10-24 20:48:52,237 views 7808 14076 Webhook received: tx_ref=QBX-E5B96EC05C, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 20:48:54,544 views 7808 14076 Payment marked as PAID: tx_ref=QBX-E5B96EC05C
+INFO 2025-10-24 20:48:58,956 views 7808 14076 Webhook received: tx_ref=QBX-0DC11C62B0, transaction_id=FAILED TXN ID, status=failed
+WARNING 2025-10-24 20:48:58,960 views 7808 14076 Payment marked as FAILED: tx_ref=QBX-0DC11C62B0, reason=failed
+INFO 2025-10-24 20:48:59,840 views 7808 14076 Webhook received: tx_ref=QBX-647960C4D6, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 20:49:02,378 views 7808 14076 Payment marked as PAID: tx_ref=QBX-647960C4D6
+WARNING 2025-10-24 20:49:03,530 views 7808 14076 Invalid webhook signature
+WARNING 2025-10-24 20:49:04,663 views 7808 14076 Invalid webhook signature
+INFO 2025-10-24 20:49:05,693 views 7808 14076 Webhook received: tx_ref=QBX-E68F226CB8, transaction_id=TEST TXN ID, status=successful
+INFO 2025-10-24 20:49:08,251 views 7808 14076 Payment marked as PAID: tx_ref=QBX-E68F226CB8
+INFO 2025-10-24 20:49:09,294 views 7808 14076 Webhook received: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN, status=successful
+ERROR 2025-10-24 20:49:09,294 views 7808 14076 Payment not found: tx_ref=NONEXISTENT-TXREF, transaction_id=UNKNOWNTXN
+ERROR 2025-10-24 20:52:47,781 views 7808 14076 Error verifying payment please try again later

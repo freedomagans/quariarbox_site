@@ -2,6 +2,7 @@
 Defining views(processes requests and returns the necessary responses)
 """
 
+import time
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -12,8 +13,11 @@ from django.views import View
 from django.views.generic import UpdateView
 from django.views.generic.edit import FormView
 from .forms import UserRegistrationForm, UsersLoginForm, UserUpdateForm, ProfileUpdateForm
+from django_ratelimit.decorators import ratelimit
+from django.utils.decorators import method_decorator
+from django.utils.http import url_has_allowed_host_and_scheme
 
-
+@method_decorator(ratelimit(key='ip', rate='5/m', block=False), name='dispatch') # security measure to limit registration requests
 class RegisterView(FormView):
     """
     processes request for the register page 
@@ -21,6 +25,12 @@ class RegisterView(FormView):
     template_name = "users/register.html"  # template to render
     form_class = UserRegistrationForm  # the form for this view
     success_url = reverse_lazy("users:login")  # page to load after successful validation "/users/login"
+
+    def dispatch(self, request, *args, **kwargs):
+        if getattr(request, 'limited', False):
+            messages.error(request, 'Too many signup attempts. Please wait a minute before retrying')
+            return redirect('home')
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         """
@@ -32,6 +42,7 @@ class RegisterView(FormView):
         return super().form_valid(form)
 
 
+@method_decorator(ratelimit(key='ip', rate='5/m', block=False), name='dispatch') # security measure to limit too many login attemtps
 class LoginView(FormView):
     """
     process requests for the login page
@@ -43,6 +54,9 @@ class LoginView(FormView):
         """redirects users to home page if they are already logged in"""
         if self.request.user.is_authenticated:
             return redirect(reverse_lazy("home"))  # redirecting to home page if authenticated
+        if getattr(request, 'limited', False):
+            messages.error(request, 'Too many login attempts pls wait before retrying. ')
+            return redirect('home')
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
@@ -51,7 +65,7 @@ class LoginView(FormView):
         if not it sends user to home page
         """
         next_url = self.request.GET.get('next')
-        if next_url:
+        if next_url and url_has_allowed_host_and_scheme(next_url, allowed_hosts={self.request.get_host()}):
             return next_url
         return reverse_lazy("home")
 
@@ -72,6 +86,7 @@ class LoginView(FormView):
                              f" Welcome {self.request.user.username} you are logged in.")  # sends a success message to the displayed page
             return super().form_valid(form)  # redirects to success_url
         else:
+            time.sleep(1)
             form.add_error(None,
                            "Invalid username or password")  # displays error if user is not authenticated successfully
             return self.form_invalid(form)
@@ -137,3 +152,13 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         else:
             return self.render_to_response(
                 self.get_context_data(form=form))  # renders template with context data specified
+
+
+class AxesLockoutView(View):
+    """
+    custom view for django-axes lockout screen
+    """
+    template_name = 'users/lockout.html'
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, status=200)
+    

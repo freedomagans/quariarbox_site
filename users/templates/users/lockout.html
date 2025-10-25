@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class='container mt-7 mb-3 text-center'>
+    <div class='shadow-sm col-md-5 p-3 m-auto'>
+        <h2 class='text-danger'>Account Locked</h2>
+            Too many failed login attempts have been detected for your account .
+            For security reasons, your login access has been temporarily disabled.
+        </p>
+        <p> 
+        <p>
+            Please wait for 30 minutes before trying again 
+        </p>
+        <div class='mt-4'>
+            <a href="{% url 'home' %}" class='btn btn-outline-primary'> 
+                Go Home</a>
+        <div>
+    </div>
+<div>
+{% endblock %}

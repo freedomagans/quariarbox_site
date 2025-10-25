@@ -6,6 +6,7 @@ import requests
 import hashlib
 import hmac
 import json
+import logging
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
@@ -22,7 +23,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.http import require_POST
-import logging
+from django_ratelimit.decorators import ratelimit
+from django.utils.decorators import method_decorator
 
 
 @login_required(login_url="users:login")  # login page if not authenticated (using decorators)
@@ -47,12 +49,18 @@ def download_receipt_pdf(request, pk):
     return response  # returns the attached pdf-file to be downloaded
 
 
+@ratelimit(key='ip', rate='3/m', block=False) # security measure to block brute forcing
 @login_required(login_url="users:login")  # login page if not authenticated (using decorators)
 def initiate_payment_view(request, pk):
     """
     processes Initiation of  payment with flutterwave payment gateway
     and redirects the user to the checkout page.
     """
+
+    #show friendly message on too many requests
+    if getattr(request, 'limited', False):
+        messages.error(request, 'Too many payment attempts. Please wait a minute.')
+        return redirect('payments:payments-history')
 
     payment = get_object_or_404(Payment, pk=pk, user=request.user)  # gets Payment instance
     if payment.status == "PAID":
@@ -95,16 +103,20 @@ def initiate_payment_view(request, pk):
         return redirect('shipments:detail', pk=payment.shipment.pk)
     except Exception as e:
         # handles network errors, timeouts , etc.
-        messages.error(request, f"Error connecting to payment gateway: {e}")
+        messages.error(request, f"Error connecting to payment gateway please try again later")
         return redirect('shipments:detail', pk=payment.shipment.pk)
 
+@ratelimit(key='ip', rate='10/m', block=False) # security measure to block brute forcing 
 @login_required(login_url="users:login")  # login page if not authenticated(using decorators)
 def verify_payment_view(request):
     """
     processes  Flutterwave redirect after payment and verifies transaction status.
     """
-
+    if getattr(request, 'limited', False):
+        messages.error(request, 'Too many verification attempts. Please try again later.')
+        return redirect('home')  # or appropriate page
     
+    # ... rest of code
 
     status = request.GET.get("status")  # get status parameter from flutterwave
     tx_ref = request.GET.get("tx_ref")  # get tx_ref value from flutterwave
@@ -126,7 +138,8 @@ def verify_payment_view(request):
         response = requests.get(url, headers=headers)  # post header to verification api url
         data = response.json()  # retrieve metadata from response
     except Exception as e:
-        logger.error(f"Error verifying payment: {e}")
+        logger = logging.getLogger(__name__)  # Move this to the TOP of the file
+        logger.error(f"Error verifying payment please try again later")
         payment.mark_failed(transaction_id=transaction_id, meta={'error': str(e)})
         messages.error(request, "Payment verification failed. Please contact support.")
         return redirect("shipments:detail", pk=payment.shipment.pk)

@@ -9,5 +9,5 @@ urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),  # login page url
     path("logout/", views.LogoutView.as_view(), name="logout"),  # logout url
     path("profile/", views.ProfileView.as_view(), name="profile"),  # profile page url
-
+    path('lockout/', views.AxesLockoutView.as_view(), name='lockout')
 ]
