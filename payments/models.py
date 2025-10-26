@@ -34,10 +34,8 @@ class Payment(models.Model):
         ("MOBILE", "Mobile Money"),
     ]
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                             related_name="payments")  # user field related to the User Model
-    shipment = models.OneToOneField("shipments.Shipment", on_delete=models.CASCADE,
-                                    related_name="payments")  # shipment field related to the Shipment Model(reference using string referenece 'shipments.Shipment')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name="payment")  # user field related to the User Model
+    shipment = models.OneToOneField("shipments.Shipment", on_delete=models.CASCADE,related_name="payment")  # shipment field related to the Shipment Model(reference using string referenece 'shipments.Shipment')
     amount = models.DecimalField(max_digits=10, decimal_places=2)  # cost of shipment to be paid
     method = models.CharField(max_length=20, choices=METHOD_CHOICES,
                               default="CARD")  # method field to selecet method of payment

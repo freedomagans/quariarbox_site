@@ -31,7 +31,7 @@ from django.utils.decorators import method_decorator
 def receipt_view(request, shipment_id):
     """ processes request for receipt page """
     shipment = get_object_or_404(Shipment,id=shipment_id, user=request.user)  # gets shipment instance
-    receipt = shipment.payments.receipt  # gets the receipt instance for that related shipment instance
+    receipt = shipment.payment.receipt  # gets the receipt instance for that related shipment instance
     return render(request, "payments/receipt.html", {"receipt": receipt})  # renders the receipt  page
 
 

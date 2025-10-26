@@ -15,7 +15,7 @@ class ShipmentAdmin(admin.ModelAdmin):
     """
     list_display = (
     "tracking_number", "user", "status", "created_at", "payment_status_badge", "assign_button")  # fields to display
-    list_filter = ("status", "created_at", "payments__status")  # fields to filter by
+    list_filter = ("status", "created_at", "payment__status")  # fields to filter by
     search_fields = ("tracking_number", "origin_address", "destination_address",)  # fields to search by
     exclude = ("tracking_number", "cost")  # fields to exclude
 
@@ -25,8 +25,8 @@ class ShipmentAdmin(admin.ModelAdmin):
         and checks status of payment for the shipment and inserts color-coded badges accordingly using the 'formt_html' method
         """
 
-        if hasattr(obj, "payments"):
-            status = obj.payments.status
+        if hasattr(obj, "payment"):
+            status = obj.payment.status
             if status == "PAID":
                 return format_html(
                     '<span style="color: white; background: green; padding: 3px 8px; border-radius: 4px;">Paid</span>')
@@ -50,7 +50,7 @@ class ShipmentAdmin(admin.ModelAdmin):
             return format_html("<span style='color:blue;padding:3px 8px;border-radius:4px;'>Assigned</span>")
 
         # case 2: paid but not assigned -> show button 
-        elif obj.payments.status == "PAID":
+        elif obj.payment.status == "PAID":
             url = (
                     reverse("admin:delivery_deliveryassignment_add") + f"?shipment={obj.pk}"
             )

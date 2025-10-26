@@ -67,4 +67,4 @@ class Shipment(models.Model):
 
     def payment_status(self):
         """returns status of related payments field"""
-        return self.payments.status
+        return self.payment.status

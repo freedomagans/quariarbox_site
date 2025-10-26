@@ -139,3 +139,4 @@ def notify_admin_shipment_delivered(sender, instance, **kwargs):
                 message=f"Shipment {instance.tracking_number} has been Delivered ✔",
                 link=reverse("admin:shipments_shipment_changelist")
             )
+

@@ -24,7 +24,7 @@ class PaymentAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         """ Disable deleting Payments """
-        return False
+        return True
 
 
 class ReceiptAdmin(admin.ModelAdmin):
@@ -41,7 +41,7 @@ class ReceiptAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         """Disables deleting receipts """
-        return False
+        return True
 
 
 # registering Payment and Receipt model to django's admin panel

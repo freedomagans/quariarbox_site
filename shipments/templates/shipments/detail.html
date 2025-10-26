@@ -55,14 +55,14 @@
                 <div class="card-footer d-flex justify-content-between">
                     <a href="{% url 'shipments:list' %}" class=" btn btn-primary btn-sm ">← Back to Shipments</a>
 
-                    {% if shipment.payments.status != 'PAID'%}
-                    <a href="{% url 'payments:initiate' shipment.payments.pk %}"
+                    {% if shipment.payment.status != 'PAID'%}
+                    <a href="{% url 'payments:initiate' shipment.payment.pk %}"
                        class=" btn btn-info btn-sm text-white p-lg-2">
                         Pay Now
                     </a>
                     {% else %}
                     <a href="{% url 'payments:receipt' shipment.id %}" class="btn btn-sm  btn-success">View Receipt</a>
-                    <a href="{% url 'payments:download-receipt' shipment.payments.receipt.pk %}"
+                    <a href="{% url 'payments:download-receipt' shipment.payment.receipt.pk %}"
                        class="btn btn-sm  btn-success"><i class="fas fa-file-pdf fa-1x"></i> Download Receipt(PDF)</a>
                     {% endif %}
                 </div>

@@ -466,7 +466,7 @@ class PaymentSignalTests(TestCase):
 
         #asserts if shipment.cost and payment amount are same for the shipment old cost
         self.assertEqual(self.shipment.cost, (self.shipment.weight * 0.01))
-        self.assertEqual(self.shipment.cost, self.shipment.payments.amount)
+        self.assertEqual(self.shipment.cost, self.shipment.payment.amount)
         
         #updates shipment weight, recalculates the cost, and applys changes
         self.shipment.weight = 200
@@ -476,7 +476,7 @@ class PaymentSignalTests(TestCase):
         
         #asserts if shipment.cost and payment amount are still same for the updated cost
         self.assertEqual(self.shipment.cost, (200 * 0.01))
-        self.assertEqual(self.shipment.cost, self.shipment.payments.amount)
+        self.assertEqual(self.shipment.cost, self.shipment.payment.amount)
 
     def test_signal_for_notifying_shipment_owner_and_admins_on_payments_paid(self):
         """
@@ -1564,7 +1564,7 @@ class PaymentIntegrationTests(TestCase):
         self.assertIn(shipment.tracking_number, admin_notification.message) # assserts admin notification contains correct message with correct shipment detail
 
         # asserts payment, shipment and receipt instances are correctly related 
-        self.assertEqual(shipment.payments, payment) 
+        self.assertEqual(shipment.payment, payment) 
         self.assertEqual(payment.receipt, receipt)
 
     def test_complete_payment_flow_failure(self):

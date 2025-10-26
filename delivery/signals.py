@@ -13,6 +13,8 @@ def set_user_role_to_courier(sender, instance, created, **kwargs):
     if created:
         profile = instance.user.profile
         profile.role = "courier"
+        instance.user.is_staff = True
+        instance.user.save()
         profile.save()
 
 
@@ -31,6 +33,8 @@ def create_courier_on_approval(sender, instance, created, **kwargs):
             """ deletes courier object when is_approved is turned false."""
             Courier.objects.get(user=instance.user).delete()
             instance.user.profile.role = "customer"
+            instance.user.is_staff = False
+            instance.user.save()
             instance.user.profile.save()
         except Courier.DoesNotExist:
             pass
