@@ -3,6 +3,7 @@ Django Settings for Courier Site Project
 Optimized for both Local Development and PythonAnywhere Deployment
 Security-hardened and environment-aware
 """
+import dj_database_url
 
 from pathlib import Path
 import os
@@ -131,7 +132,10 @@ WSGI_APPLICATION = 'courier_site_project.wsgi.application'
 # DATABASE
 # -------------------------------------------------------------------
 DATABASES = {
-    'default': env.db('DATABASE_URL')
+    'default': dj_database_url.config(default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+    conn_max_age=600,
+    ssl_require=False,
+    )
 }
 
 # Connection pooling for production
